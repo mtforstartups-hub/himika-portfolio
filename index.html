@@ -1,0 +1,2329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Himikaa — Actor · Creator · F1 Nerd</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #faf7f2;
+            --ink: #141414;
+            --mid: #666060;
+            --accent: #e84a2e;
+            --teal: #2a9d8f;
+            --yellow: #f4c430;
+            --light: #ede8e0;
+            --white: #ffffff;
+            --f1: #e8341c;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        .cursor-dot {
+            width: 7px;
+            height: 7px;
+            background: var(--accent);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s;
+        }
+
+        .cursor-ring {
+            width: 30px;
+            height: 30px;
+            border: 1.5px solid var(--accent);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+            transition: all 0.28s ease;
+            opacity: 0.5;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 200;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.4rem 3.5rem;
+            transition: background 0.4s;
+        }
+
+        nav.scrolled {
+            background: rgba(250, 247, 242, 0.94);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--light);
+        }
+
+        .nav-logo {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            color: var(--ink);
+            text-decoration: none;
+        }
+
+        .nav-logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--mid);
+            text-decoration: none;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+            transform-origin: left;
+        }
+
+        .nav-links a:hover {
+            color: var(--ink);
+        }
+
+        .nav-links a:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            overflow: hidden;
+        }
+
+        .hero-image-side {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image-side img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            transform: scale(1.06);
+            transition: transform 9s ease;
+            filter: saturate(0.9);
+        }
+
+        .hero:hover .hero-image-side img {
+            transform: scale(1);
+        }
+
+        .hero-image-side::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, transparent 55%, var(--bg) 98%);
+        }
+
+        .hero-text-side {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 8rem 4.5rem 6rem 2.5rem;
+            position: relative;
+        }
+
+        .hero-eyebrow {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeUp 0.7s 0.3s forwards;
+        }
+
+        .hero-name {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(3.2rem, 5.5vw, 6.5rem);
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -0.02em;
+            opacity: 0;
+            animation: fadeUp 0.7s 0.5s forwards;
+        }
+
+        .hero-name .name-sub {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 400;
+            color: var(--accent);
+            display: block;
+            font-size: 0.6em;
+            letter-spacing: 0.02em;
+            margin-top: 0.2rem;
+        }
+
+        .hero-sub {
+            margin-top: 1.8rem;
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: var(--mid);
+            line-height: 1.75;
+            max-width: 360px;
+            opacity: 0;
+            animation: fadeUp 0.7s 0.7s forwards;
+        }
+
+        .hero-pills {
+            margin-top: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            opacity: 0;
+            animation: fadeUp 0.7s 0.85s forwards;
+        }
+
+        .pill {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 0.35rem 0.85rem;
+            border: 1.5px solid var(--ink);
+            color: var(--ink);
+            transition: all 0.25s;
+        }
+
+        .pill:hover {
+            background: var(--ink);
+            color: var(--bg);
+        }
+
+        .pill.red {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .pill.red:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        .pill.teal {
+            border-color: var(--teal);
+            color: var(--teal);
+        }
+
+        .pill.teal:hover {
+            background: var(--teal);
+            color: white;
+        }
+
+        .hero-cta {
+            margin-top: 2.5rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            opacity: 0;
+            animation: fadeUp 0.7s 1s forwards;
+        }
+
+        .btn-primary {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--white);
+            background: var(--ink);
+            padding: 0.9rem 2rem;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent);
+        }
+
+        .btn-ghost {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--mid);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: color 0.3s;
+        }
+
+        .btn-ghost:hover {
+            color: var(--accent);
+        }
+
+        .btn-ghost::after {
+            content: '→';
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 2.5rem;
+            right: 3.5rem;
+            font-family: 'Syne', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--mid);
+            writing-mode: vertical-rl;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            opacity: 0;
+            animation: fadeIn 1s 1.5s forwards;
+        }
+
+        .hero-scroll::before {
+            content: '';
+            width: 1px;
+            height: 45px;
+            background: var(--accent);
+        }
+
+        /* MARQUEE */
+        .marquee-strip {
+            background: var(--ink);
+            padding: 0.85rem 0;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .marquee-inner {
+            display: inline-flex;
+            gap: 2.5rem;
+            animation: marquee 16s linear infinite;
+        }
+
+        .marquee-inner span {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 0.75rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--yellow);
+        }
+
+        .marquee-inner .dot {
+            color: var(--accent);
+        }
+
+        /* ABOUT */
+        .about {
+            padding: 8rem 3.5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .about-images {
+            position: relative;
+            height: 580px;
+        }
+
+        .about-img-main {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 70%;
+            height: 85%;
+            object-fit: cover;
+        }
+
+        .about-img-secondary {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 52%;
+            height: 52%;
+            object-fit: cover;
+            border: 6px solid var(--bg);
+        }
+
+        .about-badge {
+            position: absolute;
+            top: 40%;
+            right: 22%;
+            background: var(--yellow);
+            padding: 0.6rem 1rem;
+            font-family: 'Syne', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--ink);
+            transform: rotate(-4deg);
+        }
+
+        .section-eyebrow {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2rem, 3.5vw, 3.2rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .section-title em {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 400;
+            color: var(--accent);
+        }
+
+        .section-body {
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: var(--mid);
+            line-height: 1.85;
+            margin-bottom: 1.2rem;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--light);
+        }
+
+        .spec-item {}
+
+        .spec-label {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.58rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.2rem;
+        }
+
+        .spec-value {
+            font-size: 0.88rem;
+            font-weight: 400;
+            color: var(--ink);
+        }
+
+        /* WORK */
+        .work {
+            padding: 6rem 3.5rem;
+            background: var(--ink);
+        }
+
+        .work-header {
+            margin-bottom: 3.5rem;
+        }
+
+        .work-header .section-title {
+            color: var(--white);
+        }
+
+        .work-header .section-eyebrow {
+            color: var(--yellow);
+        }
+
+        .credits-tabs {
+            display: flex;
+            gap: 0;
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .tab-btn {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            padding: 0.8rem 1.8rem;
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.4);
+            cursor: none;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -1px;
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active {
+            color: var(--yellow);
+            border-bottom-color: var(--yellow);
+        }
+
+        .tab-btn:hover:not(.active) {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .credits-panel {
+            display: none;
+        }
+
+        .credits-panel.active {
+            display: block;
+        }
+
+        .credits-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .credit-row {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr 1fr;
+            gap: 1rem;
+            padding: 1.2rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            align-items: center;
+            transition: background 0.2s;
+        }
+
+        .credit-row:hover {
+            background: rgba(255, 255, 255, 0.03);
+            padding-left: 0.5rem;
+        }
+
+        .credit-year {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+        }
+
+        .credit-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        .credit-title a {
+            color: var(--white);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            transition: color 0.25s, border-color 0.25s;
+        }
+
+        .credit-title a:hover {
+            color: var(--yellow);
+            border-color: var(--yellow);
+        }
+
+        .credit-role {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .credit-platform {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 0.25rem 0.7rem;
+            background: rgba(255, 255, 255, 0.07);
+            color: rgba(255, 255, 255, 0.5);
+            text-align: center;
+            justify-self: end;
+        }
+
+        .credit-platform.ott {
+            background: rgba(232, 74, 46, 0.2);
+            color: var(--accent);
+        }
+
+        .credit-platform.film {
+            background: rgba(244, 196, 48, 0.15);
+            color: var(--yellow);
+        }
+
+        .credit-platform.yt {
+            background: rgba(42, 157, 143, 0.2);
+            color: #5ecfbf;
+        }
+
+        /* SHOWREELS */
+        .showreels {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2.5rem;
+        }
+
+        .reel-card {
+            position: relative;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 2rem;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: border-color 0.3s, background 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .reel-card:hover {
+            border-color: var(--accent);
+            background: rgba(232, 74, 46, 0.06);
+        }
+
+        .reel-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1rem;
+        }
+
+        .reel-label {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--white);
+        }
+
+        .reel-sub {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.4);
+            margin-top: 0.2rem;
+        }
+
+        /* F1 SECTION */
+        .f1-section {
+            padding: 7rem 3.5rem;
+            background: #0f0f0f;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .f1-section::before {
+            content: 'F1';
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 28vw;
+            color: rgba(232, 52, 28, 0.05);
+            position: absolute;
+            right: -3vw;
+            top: 50%;
+            transform: translateY(-50%);
+            line-height: 1;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .f1-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .f1-section .section-eyebrow {
+            color: var(--f1);
+        }
+
+        .f1-section .section-title {
+            color: var(--white);
+        }
+
+        .f1-section .section-body {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .f1-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .f1-stat {
+            padding: 1.5rem;
+            border: 1px solid rgba(232, 52, 28, 0.25);
+            background: rgba(232, 52, 28, 0.05);
+        }
+
+        .f1-stat-num {
+            font-family: 'Syne', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--f1);
+            line-height: 1;
+        }
+
+        .f1-stat-label {
+            font-size: 0.7rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.4);
+            margin-top: 0.4rem;
+            letter-spacing: 0.05em;
+        }
+
+        .f1-handle {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-top: 2rem;
+            padding: 1rem 1.5rem;
+            border: 1.5px solid var(--f1);
+            color: var(--f1);
+            text-decoration: none;
+            font-family: 'Syne', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+
+        .f1-handle:hover {
+            background: var(--f1);
+            color: white;
+        }
+
+        .f1-right {
+            position: relative;
+        }
+
+        .f1-img-stack {
+            position: relative;
+            height: 480px;
+        }
+
+        .f1-img-main {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 80%;
+            height: 88%;
+            object-fit: cover;
+            filter: saturate(0.7) contrast(1.1);
+        }
+
+        .f1-img-accent {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50%;
+            height: 45%;
+            object-fit: cover;
+            filter: saturate(0.7);
+            border: 5px solid #0f0f0f;
+        }
+
+        .f1-badge {
+            position: absolute;
+            top: 55%;
+            left: 62%;
+            background: var(--f1);
+            color: white;
+            font-family: 'Syne', sans-serif;
+            font-size: 0.58rem;
+            font-weight: 800;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            padding: 0.5rem 0.9rem;
+            transform: rotate(3deg);
+        }
+
+        /* DANCE */
+        .dance-section {
+            padding: 7rem 3.5rem;
+            background: var(--bg);
+        }
+
+        .dance-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .dance-content {}
+
+        .dance-styles {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 2rem;
+        }
+
+        .style-chip {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 0.5rem 1rem;
+            background: var(--ink);
+            color: var(--yellow);
+            transition: all 0.25s;
+        }
+
+        .style-chip:hover {
+            background: var(--teal);
+            color: white;
+        }
+
+        .dance-timeline {
+            margin-top: 2.5rem;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 1.5rem;
+            padding: 1.2rem 0;
+            border-bottom: 1px solid var(--light);
+        }
+
+        .timeline-year {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 800;
+            color: var(--teal);
+            min-width: 80px;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-desc {
+            font-size: 0.88rem;
+            color: var(--mid);
+            line-height: 1.6;
+        }
+
+        .timeline-desc strong {
+            color: var(--ink);
+            font-weight: 500;
+        }
+
+        .dance-images {
+            position: relative;
+            height: 520px;
+        }
+
+        .dance-img-main {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 75%;
+            height: 82%;
+            object-fit: cover;
+        }
+
+        .dance-img-secondary {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 55%;
+            height: 50%;
+            object-fit: cover;
+            border: 6px solid var(--bg);
+        }
+
+        .dance-badge {
+            position: absolute;
+            top: 78%;
+            left: -1rem;
+            background: var(--teal);
+            color: white;
+            font-family: 'Syne', sans-serif;
+            font-size: 0.58rem;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 0.55rem 1rem;
+            transform: rotate(2deg);
+        }
+
+        /* GALLERY */
+        .gallery {
+            padding: 6rem 3.5rem;
+            background: var(--white);
+        }
+
+        .gallery-header {
+            margin-bottom: 3rem;
+        }
+
+        .gallery-scroll {
+            display: flex;
+            gap: 0.8rem;
+            overflow-x: auto;
+            scrollbar-width: none;
+            padding-bottom: 0.5rem;
+            cursor: grab;
+        }
+
+        .gallery-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .gallery-scroll:active {
+            cursor: grabbing;
+        }
+
+        .gallery-img {
+            flex-shrink: 0;
+            height: 400px;
+            width: auto;
+            object-fit: cover;
+            filter: saturate(0.82);
+            transition: filter 0.4s, transform 0.4s;
+        }
+
+        .gallery-img:hover {
+            filter: saturate(1.15);
+            transform: scale(1.02);
+        }
+
+        /* CONTACT */
+        .contact {
+            padding: 8rem 3.5rem;
+            background: var(--bg);
+        }
+
+        .contact-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: start;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .form-label {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--mid);
+        }
+
+        .form-input,
+        .form-textarea {
+            background: transparent;
+            border: none;
+            border-bottom: 1.5px solid var(--light);
+            padding: 0.7rem 0;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            color: var(--ink);
+            outline: none;
+            transition: border-color 0.3s;
+            width: 100%;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            border-color: var(--accent);
+        }
+
+        .form-textarea {
+            resize: none;
+            height: 100px;
+        }
+
+        .form-submit {
+            margin-top: 1rem;
+            padding: 1rem 2.5rem;
+            background: var(--ink);
+            color: var(--white);
+            border: none;
+            font-family: 'Syne', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            cursor: none;
+            align-self: flex-start;
+            transition: background 0.3s;
+        }
+
+        .form-submit:hover {
+            background: var(--accent);
+        }
+
+        .contact-info-item {
+            margin-bottom: 2rem;
+        }
+
+        .contact-info-label {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.4rem;
+        }
+
+        .contact-info-value {
+            font-size: 1rem;
+            font-weight: 300;
+            color: var(--ink);
+        }
+
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 2.5rem;
+        }
+
+        .contact-link {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 0.6rem 1.2rem;
+            border: 1.5px solid var(--ink);
+            color: var(--ink);
+            text-decoration: none;
+            transition: all 0.25s;
+        }
+
+        .contact-link:hover {
+            background: var(--ink);
+            color: var(--bg);
+        }
+
+        .contact-link.imdb {
+            border-color: var(--yellow);
+            color: var(--yellow);
+        }
+
+        .contact-link.imdb:hover {
+            background: var(--yellow);
+            color: var(--ink);
+        }
+
+        .contact-link.f1 {
+            border-color: var(--f1);
+            color: var(--f1);
+        }
+
+        .contact-link.f1:hover {
+            background: var(--f1);
+            color: white;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--ink);
+            padding: 2.5rem 3.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--white);
+            letter-spacing: 0.05em;
+        }
+
+        .footer-logo span {
+            color: var(--accent);
+        }
+
+        .footer-copy {
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.3);
+            letter-spacing: 0.1em;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .footer-links a {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.62rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.35);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--yellow);
+        }
+
+        .divider {
+            height: 1px;
+            background: var(--light);
+            margin: 0 3.5rem;
+        }
+
+        /* CUSTOM EMOJI CURSORS */
+        body.cursor-f1 {
+            cursor: none;
+        }
+
+        body.cursor-f1 .cursor-dot {
+            background: var(--f1);
+            width: 0;
+            height: 0;
+        }
+
+        body.cursor-f1 .cursor-ring {
+            border: none;
+            font-size: 1.6rem;
+            background: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            opacity: 1;
+        }
+
+        body.cursor-f1 .cursor-ring::after {
+            content: '🏎️';
+        }
+
+        body.cursor-camera .cursor-dot {
+            background: var(--teal);
+            width: 0;
+            height: 0;
+        }
+
+        body.cursor-camera .cursor-ring {
+            border: none;
+            font-size: 1.5rem;
+            background: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            opacity: 1;
+        }
+
+        body.cursor-camera .cursor-ring::after {
+            content: '📷';
+        }
+
+        /* BRAND DEALS */
+        .brand-deals {
+            padding: 7rem 3.5rem;
+            background: var(--white);
+        }
+
+        .brand-deals-header {
+            margin-bottom: 3rem;
+        }
+
+        .reels-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .reel-item {
+            position: relative;
+            background: var(--ink);
+            overflow: hidden;
+            border-radius: 0;
+        }
+
+        .reel-item-inner {
+            aspect-ratio: 9/16;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .reel-thumbnail {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: saturate(0.7) brightness(0.6);
+            transition: filter 0.4s, transform 0.4s;
+        }
+
+        .reel-item:hover .reel-thumbnail {
+            filter: saturate(1) brightness(0.5);
+            transform: scale(1.04);
+        }
+
+        .reel-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .reel-play-btn {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: white;
+            transition: background 0.3s, transform 0.3s;
+            text-decoration: none;
+            backdrop-filter: blur(4px);
+        }
+
+        .reel-item:hover .reel-play-btn {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: scale(1.1);
+        }
+
+        .reel-brand-name {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: white;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .reel-tag {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.58rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            padding: 0.3rem 0.8rem;
+            background: var(--accent);
+            color: white;
+        }
+
+        .reel-watch-link {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: color 0.3s;
+        }
+
+        .reel-watch-link:hover {
+            color: var(--yellow);
+        }
+
+        .reel-watch-link::after {
+            content: '↗';
+        }
+
+        /* F1 VIDEOS */
+        .f1-videos {
+            padding: 5rem 3.5rem 7rem;
+            background: #0f0f0f;
+        }
+
+        .f1-videos-header {
+            margin-bottom: 3rem;
+        }
+
+        .f1-videos-header .section-eyebrow {
+            color: var(--f1);
+        }
+
+        .f1-videos-header .section-title {
+            color: var(--white);
+        }
+
+        .f1-reels-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .f1-reel-item {
+            position: relative;
+            background: #1a1a1a;
+            overflow: hidden;
+        }
+
+        .f1-reel-item-inner {
+            aspect-ratio: 9/16;
+            position: relative;
+            background: linear-gradient(135deg, #1a1a1a, #2d1010);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .f1-reel-thumbnail {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: saturate(0.5) brightness(0.5);
+            transition: filter 0.4s, transform 0.4s;
+        }
+
+        .f1-reel-item:hover .f1-reel-thumbnail {
+            filter: saturate(0.8) brightness(0.4);
+            transform: scale(1.04);
+        }
+
+        .f1-reel-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            padding: 1rem;
+        }
+
+        .f1-reel-play {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(232, 52, 28, 0.2);
+            border: 2px solid var(--f1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: white;
+            text-decoration: none;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .f1-reel-item:hover .f1-reel-play {
+            background: var(--f1);
+            transform: scale(1.1);
+        }
+
+        .f1-reel-label {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.6);
+            text-align: center;
+        }
+
+        @media (max-width: 900px) {
+            .reels-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .f1-reels-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .brand-deals,
+            .f1-videos {
+                padding: 4rem 1.5rem;
+            }
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(22px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes marquee {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 {
+            transition-delay: 0.12s;
+        }
+
+        .reveal-delay-2 {
+            transition-delay: 0.24s;
+        }
+
+        .reveal-delay-3 {
+            transition-delay: 0.38s;
+        }
+
+        @media (max-width: 900px) {
+            nav {
+                padding: 1.2rem 1.5rem;
+            }
+
+            .nav-links {
+                gap: 1.2rem;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-image-side {
+                position: absolute;
+                inset: 0;
+                z-index: 0;
+            }
+
+            .hero-image-side::after {
+                background: linear-gradient(to top, var(--bg) 35%, rgba(250, 247, 242, 0.55) 70%, transparent 100%);
+            }
+
+            .hero-text-side {
+                position: relative;
+                z-index: 1;
+                justify-content: flex-end;
+                padding: 2rem 1.5rem 5rem;
+                min-height: 100vh;
+            }
+
+            .about,
+            .f1-inner,
+            .dance-inner,
+            .contact-inner {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .about-images,
+            .f1-img-stack,
+            .dance-images {
+                height: 360px;
+            }
+
+            .credit-row {
+                grid-template-columns: 1fr 2fr;
+            }
+
+            .credit-platform {
+                display: none;
+            }
+
+            .showreels {
+                grid-template-columns: 1fr;
+            }
+
+            .f1-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .gallery-img {
+                height: 260px;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 1.2rem;
+                text-align: center;
+            }
+
+            .footer-links {
+                justify-content: center;
+            }
+
+            .about,
+            .dance-section,
+            .gallery,
+            .contact {
+                padding: 4rem 1.5rem;
+            }
+
+            .work,
+            .f1-section {
+                padding: 4rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="cursor-dot" id="dot"></div>
+    <div class="cursor-ring" id="ring"></div>
+
+    <!-- NAV -->
+    <nav id="nav">
+        <a href="#" class="nav-logo">HIMIKA <span>BOSE</span></a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#f1">F1</a></li>
+            <li><a href="#brands">Brands</a></li>
+            <li><a href="#dance">Dance</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-image-side">
+            <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=900&q=80&fit=crop&crop=faces"
+                alt="Himikaa" />
+        </div>
+        <div class="hero-text-side">
+            <p class="hero-eyebrow">Actor · Creator · F1 Nerd · Dancer</p>
+            <h1 class="hero-name">
+                HIMIKA BOSE
+                <span class="name-sub">Actor · Creator · F1 Nerd</span>
+            </h1>
+            <p class="hero-sub">Bollywood. OTT. Malayalam cinema. Bengali shows. And a dedicated F1 alter ego.
+                Delhi–Bombay.</p>
+            <div class="hero-pills">
+                <span class="pill">Actor</span>
+                <span class="pill red">F1 &#x1F3CE;&#xFE0F;</span>
+                <span class="pill teal">Dancer</span>
+                <span class="pill">Lifestyle Creator</span>
+            </div>
+            <div class="hero-cta">
+                <a href="#work" class="btn-primary">View Work</a>
+                <a href="#contact" class="btn-ghost">Get in touch</a>
+            </div>
+        </div>
+        <span class="hero-scroll">Scroll</span>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee-strip">
+        <div class="marquee-inner">
+            <span>Kaalipotka</span><span class="dot"> ✦ </span>
+            <span>ImMATURE</span><span class="dot"> ✦ </span>
+            <span>Pad Man</span><span class="dot"> ✦ </span>
+            <span>Breathe: Into the Shadows</span><span class="dot"> ✦ </span>
+            <span>Jugaadistan</span><span class="dot"> ✦ </span>
+            <span>@himikatalksf1</span><span class="dot"> ✦ </span>
+            <span>Bristol Old Vic</span><span class="dot"> ✦ </span>
+            <span>The Danceworx</span><span class="dot"> ✦ </span>
+            <span>Kaalipotka</span><span class="dot"> ✦ </span>
+            <span>ImMATURE</span><span class="dot"> ✦ </span>
+            <span>Pad Man</span><span class="dot"> ✦ </span>
+            <span>Breathe: Into the Shadows</span><span class="dot"> ✦ </span>
+            <span>Jugaadistan</span><span class="dot"> ✦ </span>
+            <span>@himikatalksf1</span><span class="dot"> ✦ </span>
+            <span>Bristol Old Vic</span><span class="dot"> ✦ </span>
+            <span>The Danceworx</span><span class="dot"> ✦ </span>
+        </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <div class="about-images reveal">
+            <img class="about-img-main"
+                src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=700&q=80&fit=crop&crop=faces"
+                alt="Himikaa" />
+            <img class="about-img-secondary"
+                src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=500&q=80&fit=crop&crop=faces"
+                alt="Himikaa portrait" />
+            <span class="about-badge">Delhi · Bombay</span>
+        </div>
+        <div>
+            <p class="section-eyebrow reveal">About Me</p>
+            <h2 class="section-title reveal reveal-delay-1">Actor. Creator.<br><em>Chaos energy.</em></h2>
+            <p class="section-body reveal reveal-delay-2">I'm Himikaa Bose — trained at Bristol Old Vic Theatre School,
+                and equally at home in a dramatic scene as I am losing my mind at a Grand Prix. I've been acting since I
+                was a kid doing short films, and I haven't stopped since.</p>
+            <p class="section-body reveal reveal-delay-2">From Bollywood to Malayalam cinema to Bengali shows to Amazon
+                OTT — I've been around the block. Off screen, I'm a lifestyle and F1 content creator sharing everything
+                from race weekends and motorsport deep dives to everyday life, fashion, and the chaos of living between
+                Delhi and Bombay. Add 80+ TV commercials and 15 years of dance training and you've got the full picture.
+            </p>
+            <div class="specs-grid reveal reveal-delay-3">
+                <div class="spec-item">
+                    <div class="spec-label">Screen Age</div>
+                    <div class="spec-value">18–26 years</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Height</div>
+                    <div class="spec-value">5'5" / 165cm</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Languages</div>
+                    <div class="spec-value">English, Hindi, Bengali, Malayalam</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Training</div>
+                    <div class="spec-value">Bristol Old Vic Theatre School</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Appearance</div>
+                    <div class="spec-value">Indian, Mediterranean, Mixed Race</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Based</div>
+                    <div class="spec-value">Delhi · Bombay</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- WORK -->
+    <section class="work" id="work">
+        <div class="work-header">
+            <p class="section-eyebrow reveal">Credits</p>
+            <h2 class="section-title reveal reveal-delay-1">The Work</h2>
+        </div>
+
+        <div class="credits-tabs">
+            <button class="tab-btn active" onclick="switchTab('films')">Films</button>
+            <button class="tab-btn" onclick="switchTab('series')">Web & TV Series</button>
+            <button class="tab-btn" onclick="switchTab('short')">Short Films</button>
+            <button class="tab-btn" onclick="switchTab('commercials')">Commercials</button>
+        </div>
+
+        <div class="credits-panel active" id="tab-films">
+            <div class="credits-list">
+                <div class="credit-row">
+                    <div class="credit-year">2018</div>
+                    <div class="credit-title"><a href="https://www.google.com/search?q=Pad+Man+2018+film"
+                            target="_blank">Pad Man</a></div>
+                    <div class="credit-role">Supporting Role</div>
+                    <div class="credit-platform film">Film</div>
+                </div>
+                <div class="credit-row">
+                    <div class="credit-year">2020</div>
+                    <div class="credit-title"><a href="https://www.google.com/search?q=Jai+Mummy+Di+2020+film"
+                            target="_blank">Jai Mummy Di</a></div>
+                    <div class="credit-role">Role</div>
+                    <div class="credit-platform film">Film</div>
+                </div>
+                <div class="credit-row">
+                    <div class="credit-year">2020</div>
+                    <div class="credit-title"><a
+                            href="https://www.google.com/search?q=Valiyaperunnal+2020+Malayalam+film"
+                            target="_blank">Valiyaperunnal</a></div>
+                    <div class="credit-role">Female Lead — Pooja</div>
+                    <div class="credit-platform film">Malayalam Film</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="credits-panel" id="tab-series">
+            <div class="credits-list">
+                <div class="credit-row">
+                    <div class="credit-year">2018–Present</div>
+                    <div class="credit-title"><a href="https://www.google.com/search?q=ImMATURE+web+series+Amazon"
+                            target="_blank">ImMATURE</a></div>
+                    <div class="credit-role">Nandini / Natasha — 10 episodes</div>
+                    <div class="credit-platform ott">Amazon</div>
+                </div>
+                <div class="credit-row">
+                    <div class="credit-year">2019</div>
+                    <div class="credit-title"><a href="https://www.google.com/search?q=The+Insiders+2019+TV+series"
+                            target="_blank">The Insiders</a></div>
+                    <div class="credit-role">Shravya Sharma — 5 episodes</div>
+                    <div class="credit-platform ott">TV</div>
+                </div>
+                <div class="credit-row">
+                    <div class="credit-year">2020</div>
+                    <div class="credit-title"><a href="https://www.google.com/search?q=MTV+Nishedh+web+series"
+                            target="_blank">MTV Nishedh</a></div>
+                    <div class="credit-role">Laxmi — 14 episodes</div>
+                    <div class="credit-platform ott">MTV</div>
+                </div>
+                <div class="credit-row">
+                    <div class="credit-year">2020</div>
+                    <div class="credit-title"><a href="https://www.google.com/search?q=The+Glitch+2020+YouTube+series"
+                            target="_blank">The Glitch</a></div>
+                    <div class="credit-role">Role</div>
+                    <div class="credit-platform yt">YouTube</div>
+                </div>
+                <div class="credit-row">
+                    <div class="credit-year">2021</div>
+                    <div class="credit-title"><a
+                            href="https://www.google.com/search?q=Breathe+Into+the+Shadows+Amazon+Prime"
+                            target="_blank">Breathe: Into the Shadows</a></div>
+                    <div class="credit-role">Rahila Kaul — 5 episodes</div>
+                    <div class="credit-platform ott">Amazon</div>
+                </div>
+                <div class="credit-row">
+                    <div class="credit-year">2022</div>
+                    <div class="credit-title"><a
+                            href="https://www.google.com/search?q=Jugaadistan+Lionsgate+Play+series"
+                            target="_blank">Jugaadistan</a></div>
+                    <div class="credit-role">Aarti Chatterjee — 8 episodes</div>
+                    <div class="credit-platform ott">Lionsgate</div>
+                </div>
+                <div class="credit-row">
+                    <div class="credit-year">2022</div>
+                    <div class="credit-title"><a
+                            href="https://www.google.com/search?q=Feels+Like+Home+Lionsgate+Play+series"
+                            target="_blank">Feels Like Home</a></div>
+                    <div class="credit-role">Dhriti — 12 episodes</div>
+                    <div class="credit-platform ott">Lionsgate</div>
+                </div>
+                <div class="credit-row">
+                    <div class="credit-year">2024</div>
+                    <div class="credit-title"><a
+                            href="https://www.google.com/search?q=Canteen+Honors+The+Timeliners+YouTube"
+                            target="_blank">Canteen Honors</a></div>
+                    <div class="credit-role">Role — 6 episodes</div>
+                    <div class="credit-platform yt">The Timeliners</div>
+                </div>
+                <div class="credit-row">
+                    <div class="credit-year">2024</div>
+                    <div class="credit-title"><a href="https://www.google.com/search?q=Highway+Love+Season+2+Amazon"
+                            target="_blank">Highway Love Season 2</a></div>
+                    <div class="credit-role">Nidhi — 6 episodes</div>
+                    <div class="credit-platform ott">Amazon</div>
+                </div>
+                <div class="credit-row">
+                    <div class="credit-year">2026</div>
+                    <div class="credit-title"><a href="https://www.google.com/search?q=Kaalipotka+Bengali+series+2026"
+                            target="_blank">Kaalipotka</a></div>
+                    <div class="credit-role">Rinku</div>
+                    <div class="credit-platform film">Bengali Series</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="credits-panel" id="tab-short">
+            <div class="credits-list">
+                <div class="credit-row">
+                    <div class="credit-year">2016</div>
+                    <div class="credit-title"><a href="https://www.google.com/search?q=Abnormal+2016+short+film+Hotstar"
+                            target="_blank">Abnormal</a></div>
+                    <div class="credit-role">Available on Hotstar &amp; YouTube</div>
+                    <div class="credit-platform yt">Short Film</div>
+                </div>
+                <div class="credit-row">
+                    <div class="credit-year">2021</div>
+                    <div class="credit-title"><a
+                            href="https://www.google.com/search?q=The+Tipping+Point+2021+short+film" target="_blank">The
+                            Tipping Point</a></div>
+                    <div class="credit-role">Lead</div>
+                    <div class="credit-platform film">Short Film</div>
+                </div>
+                <div class="credit-row">
+                    <div class="credit-year">2022</div>
+                    <div class="credit-title"><a
+                            href="https://www.google.com/search?q=What+If+I+Fail+2022+short+film+Kiran+Nagdev"
+                            target="_blank">What If I Fail</a></div>
+                    <div class="credit-role">Jaanvi · Dir. Kiran Nagdev · Film Festivals</div>
+                    <div class="credit-platform film">Short Film</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="credits-panel" id="tab-commercials">
+            <p style="color:rgba(255,255,255,0.5); font-size:0.9rem; margin-bottom:2rem; font-weight:300;">80+ TV
+                commercials across major brands including:</p>
+            <div class="credits-list">
+                <div class="credit-row">
+                    <div class="credit-year">—</div>
+                    <div class="credit-title">Cadbury</div>
+                    <div class="credit-role"></div>
+                    <div class="credit-platform film">TVC</div>
+                </div>
+                <div class="credit-row">
+                    <div class="credit-year">—</div>
+                    <div class="credit-title">Airtel × iPhone</div>
+                    <div class="credit-role"></div>
+                    <div class="credit-platform ott">TVC</div>
+                </div>
+                <div class="credit-row">
+                    <div class="credit-year">—</div>
+                    <div class="credit-title">Garnier</div>
+                    <div class="credit-role"></div>
+                    <div class="credit-platform film">TVC</div>
+                </div>
+                <div class="credit-row">
+                    <div class="credit-year">—</div>
+                    <div class="credit-title">Fastrack Watches</div>
+                    <div class="credit-role"></div>
+                    <div class="credit-platform film">TVC</div>
+                </div>
+                <div class="credit-row">
+                    <div class="credit-year">—</div>
+                    <div class="credit-title">Micromax</div>
+                    <div class="credit-role"></div>
+                    <div class="credit-platform ott">TVC</div>
+                </div>
+                <div class="credit-row">
+                    <div class="credit-year">—</div>
+                    <div class="credit-title">Coffee Bite</div>
+                    <div class="credit-role"></div>
+                    <div class="credit-platform film">TVC</div>
+                </div>
+                <div class="credit-row">
+                    <div class="credit-year">—</div>
+                    <div class="credit-title">OYO Rooms</div>
+                    <div class="credit-role"></div>
+                    <div class="credit-platform yt">TVC</div>
+                </div>
+                <div class="credit-row">
+                    <div class="credit-year">—</div>
+                    <div class="credit-title">+ many more</div>
+                    <div class="credit-role">80+ total</div>
+                    <div class="credit-platform film">TVC</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SHOWREELS -->
+        <div class="showreels" style="margin-top:3rem;">
+            <a class="reel-card" href="https://www.youtube.com/watch?v=AA2OU8OmjOE" target="_blank">
+                <div class="reel-icon">▶</div>
+                <div>
+                    <div class="reel-label">Dramatic Showreel</div>
+                    <div class="reel-sub">Watch on YouTube</div>
+                </div>
+            </a>
+            <a class="reel-card" href="https://www.youtube.com/watch?v=adqYdvppiDA" target="_blank">
+                <div class="reel-icon">▶</div>
+                <div>
+                    <div class="reel-label">Commercial Showreel</div>
+                    <div class="reel-sub">Watch on YouTube</div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- F1 SECTION -->
+    <section class="f1-section" id="f1">
+        <div class="f1-inner">
+            <div>
+                <p class="section-eyebrow reveal">Motorsport & Content</p>
+                <h2 class="section-title reveal reveal-delay-1">Full-Send<br><em style="color:var(--f1)">F1 Nerd.</em>
+                </h2>
+                <p class="section-body reveal reveal-delay-2">When she's not on set, Himikaa is probably watching
+                    qualifying. A self-described F1 nerd with a dedicated motorsport alter ego — @himikatalksf1 — she
+                    creates race reactions, hot takes, in-depth informational content, driver breakdowns, and commentary
+                    for fellow F1 fans across India.</p>
+                <p class="section-body reveal reveal-delay-2">From explaining technical regulations to breaking down
+                    race strategy — it's not just vibes, it's actual knowledge. Her passion for the sport is baked into
+                    her identity, and her audience loves her for it.</p>
+                <div class="f1-stats reveal reveal-delay-3">
+                    <div class="f1-stat">
+                        <div class="f1-stat-num">🏎️</div>
+                        <div class="f1-stat-label">Dedicated F1 content account</div>
+                    </div>
+                    <div class="f1-stat">
+                        <div class="f1-stat-num">103K</div>
+                        <div class="f1-stat-label">Instagram followers</div>
+                    </div>
+                    <div class="f1-stat">
+                        <div class="f1-stat-num">🔥</div>
+                        <div class="f1-stat-label">Race reactions & hot takes</div>
+                    </div>
+                    <div class="f1-stat">
+                        <div class="f1-stat-num">24/7</div>
+                        <div class="f1-stat-label">F1 on the brain</div>
+                    </div>
+                </div>
+                <a href="https://www.instagram.com/himikatalksf1" target="_blank"
+                    class="f1-handle reveal reveal-delay-3">
+                    🏁 @himikatalksf1 — F1 Content Account
+                </a>
+                <a href="https://www.instagram.com/himika_bose" target="_blank" class="f1-handle reveal reveal-delay-3"
+                    style="margin-top:0.8rem; border-color: rgba(255,255,255,0.25); color: rgba(255,255,255,0.6);">
+                    📸 @himika_bose — Main Instagram
+                </a>
+            </div>
+            <div class="f1-right reveal">
+                <div class="f1-img-stack">
+                    <img class="f1-img-main"
+                        src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=700&q=80&fit=crop"
+                        alt="F1" />
+                    <img class="f1-img-accent"
+                        src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80&fit=crop"
+                        alt="F1 racing" />
+                    <span class="f1-badge">@himikatalksf1</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DANCE -->
+    <section class="dance-section" id="dance">
+        <div class="dance-inner">
+            <div>
+                <p class="section-eyebrow reveal">Dance</p>
+                <h2 class="section-title reveal reveal-delay-1">Trained since<br><em>age 8.</em></h2>
+                <p class="section-body reveal reveal-delay-2">Dance isn't just something Himikaa does — it's how she
+                    thinks about movement, character, and presence on screen. 15+ years of training across multiple
+                    styles, 100 stage shows, and 2 years of teaching experience.</p>
+                <div class="dance-styles reveal reveal-delay-2">
+                    <span class="style-chip">Jazz</span>
+                    <span class="style-chip">Contemporary</span>
+                    <span class="style-chip">Ballet</span>
+                    <span class="style-chip">Bharatnatyam</span>
+                    <span class="style-chip">Salsa</span>
+                    <span class="style-chip">Jive</span>
+                    <span class="style-chip">Cha Cha</span>
+                    <span class="style-chip">Hip Hop</span>
+                    <span class="style-chip">Animal Flow</span>
+                </div>
+                <div class="dance-timeline reveal reveal-delay-3">
+                    <div class="timeline-item">
+                        <div class="timeline-year">2011–16</div>
+                        <div class="timeline-desc"><strong>The Danceworx India</strong> — Specialized in Jazz,
+                            Contemporary &amp; Ballet</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">Stage</div>
+                        <div class="timeline-desc"><strong>Kingdom of Dreams — Jhumroo</strong> · ~100 shows as a Dancer
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">Teaching</div>
+                        <div class="timeline-desc"><strong>Teaching Kids Ballet · 2 years</strong> — The Danceworx</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">Teaching</div>
+                        <div class="timeline-desc"><strong>Teaching Adults Jazz · 2 years</strong> — The Danceworx</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1 Year</div>
+                        <div class="timeline-desc"><strong>Teaching Kids Ballet · Oberoi School</strong></div>
+                    </div>
+                </div>
+            </div>
+            <div class="dance-images reveal">
+                <img class="dance-img-main"
+                    src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=700&q=80&fit=crop"
+                    alt="Dance" />
+                <img class="dance-img-secondary"
+                    src="https://images.unsplash.com/photo-1547153760-18fc86324498?w=500&q=80&fit=crop"
+                    alt="Dance performance" />
+                <span class="dance-badge">~100 Stage Shows</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery" id="gallery">
+        <div class="gallery-header">
+            <p class="section-eyebrow reveal">Gallery</p>
+            <h2 class="section-title reveal reveal-delay-1">Behind the <em>Frame</em></h2>
+        </div>
+        <div class="gallery-scroll" id="galleryScroll">
+            <img class="gallery-img"
+                src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&q=80&fit=crop&crop=faces"
+                alt="Gallery 1" />
+            <img class="gallery-img"
+                src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=400&q=80&fit=crop&crop=faces"
+                alt="Gallery 2" />
+            <img class="gallery-img"
+                src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&q=80&fit=crop&crop=faces"
+                alt="Gallery 3" />
+            <img class="gallery-img"
+                src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=500&q=80&fit=crop&crop=faces"
+                alt="Gallery 4" />
+            <img class="gallery-img"
+                src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=400&q=80&fit=crop&crop=faces"
+                alt="Gallery 5" />
+            <img class="gallery-img"
+                src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=400&q=80&fit=crop&crop=faces"
+                alt="Gallery 6" />
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- BRAND DEALS -->
+    <section class="brand-deals" id="brands">
+        <div class="brand-deals-header">
+            <p class="section-eyebrow reveal">Instagram · Brand Collaborations</p>
+            <h2 class="section-title reveal reveal-delay-1">Brands I've <em>Worked With</em></h2>
+            <p class="section-body reveal reveal-delay-2" style="max-width:520px;">Click any card to watch the reel.
+                Available for brand partnerships across lifestyle, F1, beauty, tech, and more.</p>
+        </div>
+        <div class="reels-grid">
+
+            <div class="reel-item reveal">
+                <div class="reel-item-inner">
+                    <img class="reel-thumbnail"
+                        src="https://images.unsplash.com/photo-1622543925917-763c34d1a86e?w=400&q=80&fit=crop"
+                        alt="Sting Energy" />
+                    <div class="reel-overlay">
+                        <span class="reel-tag">Brand Collab</span>
+                        <div class="reel-brand-name">Sting</div>
+                        <a href="https://www.instagram.com/reel/DWIvACCR9s1/?igsh=OXVoc2dpd3JoZjgy" target="_blank"
+                            class="reel-play-btn">▶</a>
+                        <a href="https://www.instagram.com/reel/DWIvACCR9s1/?igsh=OXVoc2dpd3JoZjgy" target="_blank"
+                            class="reel-watch-link">Watch Reel</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reel-item reveal reveal-delay-1">
+                <div class="reel-item-inner">
+                    <img class="reel-thumbnail"
+                        src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=400&q=80&fit=crop"
+                        alt="La Shield" />
+                    <div class="reel-overlay">
+                        <span class="reel-tag">Brand Collab</span>
+                        <div class="reel-brand-name">La Shield</div>
+                        <a href="https://www.instagram.com/reel/DVIWRWYkcYj/?igsh=NW0wd21kNjIxY3Y5" target="_blank"
+                            class="reel-play-btn">▶</a>
+                        <a href="https://www.instagram.com/reel/DVIWRWYkcYj/?igsh=NW0wd21kNjIxY3Y5" target="_blank"
+                            class="reel-watch-link">Watch Reel</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reel-item reveal reveal-delay-2">
+                <div class="reel-item-inner">
+                    <img class="reel-thumbnail"
+                        src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400&q=80&fit=crop"
+                        alt="Enamor" />
+                    <div class="reel-overlay">
+                        <span class="reel-tag">Brand Collab</span>
+                        <div class="reel-brand-name">Enamor</div>
+                        <a href="https://www.instagram.com/reel/DKwrvhupbCa/?igsh=OXAyMWQxbjNwMnF4" target="_blank"
+                            class="reel-play-btn">▶</a>
+                        <a href="https://www.instagram.com/reel/DKwrvhupbCa/?igsh=OXAyMWQxbjNwMnF4" target="_blank"
+                            class="reel-watch-link">Watch Reel</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- F1 VIDEOS -->
+    <section class="f1-videos" id="f1-videos">
+        <div class="f1-videos-header">
+            <p class="section-eyebrow reveal">@himikatalksf1</p>
+            <h2 class="section-title reveal reveal-delay-1">Best F1 <em style="color:var(--f1)">Content</em></h2>
+        </div>
+        <div class="f1-reels-grid">
+
+            <div class="f1-reel-item reveal">
+                <div class="f1-reel-item-inner">
+                    <img class="f1-reel-thumbnail"
+                        src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=400&q=80&fit=crop"
+                        alt="F1 Reel" />
+                    <div class="f1-reel-overlay">
+                        <a href="https://www.instagram.com/reel/DV26j6DRYFq/?igsh=d2V2Z2k1OGxodTRx" target="_blank"
+                            class="f1-reel-play">▶</a>
+                        <div class="f1-reel-label">Watch on Instagram</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="f1-reel-item reveal reveal-delay-1">
+                <div class="f1-reel-item-inner">
+                    <img class="f1-reel-thumbnail"
+                        src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80&fit=crop"
+                        alt="F1 Reel" />
+                    <div class="f1-reel-overlay">
+                        <a href="https://www.instagram.com/reel/DVkvAhtRjwt/?igsh=cWp6djgwOTA2dHg2" target="_blank"
+                            class="f1-reel-play">▶</a>
+                        <div class="f1-reel-label">Watch on Instagram</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="f1-reel-item reveal reveal-delay-2">
+                <div class="f1-reel-item-inner">
+                    <img class="f1-reel-thumbnail"
+                        src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&q=80&fit=crop"
+                        alt="F1 Reel" />
+                    <div class="f1-reel-overlay">
+                        <a href="https://www.instagram.com/reel/DWEN_7TiSh7/?igsh=MThyOHF5NzhodGVsaA==" target="_blank"
+                            class="f1-reel-play">▶</a>
+                        <div class="f1-reel-label">Watch on Instagram</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="f1-reel-item reveal reveal-delay-3">
+                <div class="f1-reel-item-inner">
+                    <img class="f1-reel-thumbnail"
+                        src="https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?w=400&q=80&fit=crop"
+                        alt="F1 Reel" />
+                    <div class="f1-reel-overlay">
+                        <a href="https://www.instagram.com/reel/DVVO7XBCk0v/?igsh=NXpkZjgycWptcHN4" target="_blank"
+                            class="f1-reel-play">▶</a>
+                        <div class="f1-reel-label">Watch on Instagram</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+        <div class="contact-inner">
+            <div>
+                <p class="section-eyebrow reveal">Let's Connect</p>
+                <h2 class="section-title reveal reveal-delay-1">Work with <em>me</em></h2>
+                <p class="section-body reveal reveal-delay-2">Open to film, web series, theatre, brand campaigns and
+                    collaborations. If you're building something interesting, let's talk.</p>
+                <div class="reveal reveal-delay-2">
+                    <div class="contact-info-item">
+                        <div class="contact-info-label">Based in</div>
+                        <div class="contact-info-value">Delhi · Bombay</div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-info-label">Spotlight</div>
+                        <div class="contact-info-value">8393-7834-2731</div>
+                    </div>
+                </div>
+                <div class="contact-links reveal reveal-delay-3">
+                    <a href="https://www.instagram.com/himika_bose" target="_blank" class="contact-link">Instagram</a>
+                    <a href="https://www.imdb.com/name/nm8479608/" target="_blank" class="contact-link imdb">IMDb</a>
+                    <a href="https://www.spotlight.com/8393-7834-2731" target="_blank"
+                        class="contact-link">Spotlight</a>
+                    <a href="https://www.instagram.com/himikatalksf1" target="_blank"
+                        class="contact-link f1">@himikatalksf1</a>
+                </div>
+            </div>
+            <div class="contact-form reveal reveal-delay-1">
+                <div class="form-group">
+                    <label class="form-label">Your Name</label>
+                    <input class="form-input" type="text" placeholder="Director / Producer / Brand" />
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input class="form-input" type="email" placeholder="your@email.com" />
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Project Type</label>
+                    <input class="form-input" type="text" placeholder="Film / Series / Commercial / Collab" />
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Tell me more</label>
+                    <textarea class="form-textarea" placeholder="What are you working on?"></textarea>
+                </div>
+                <button class="form-submit">Send It →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-logo">HIMIKA <span>BOSE</span></div>
+        <p class="footer-copy">© 2026 Himikaa Bose · Delhi · Bombay</p>
+        <ul class="footer-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#f1">F1</a></li>
+            <li><a href="#brands">Brands</a></li>
+            <li><a href="#dance">Dance</a></li>
+        </ul>
+    </footer>
+
+    <script>
+        // Cursor
+        const dot = document.getElementById('dot');
+        const ring = document.getElementById('ring');
+        document.addEventListener('mousemove', e => {
+            dot.style.left = e.clientX + 'px'; dot.style.top = e.clientY + 'px';
+            setTimeout(() => { ring.style.left = e.clientX + 'px'; ring.style.top = e.clientY + 'px'; }, 80);
+        });
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('mouseenter', () => { ring.style.transform = 'translate(-50%,-50%) scale(1.9)'; ring.style.opacity = '1'; });
+            el.addEventListener('mouseleave', () => { ring.style.transform = 'translate(-50%,-50%) scale(1)'; ring.style.opacity = '0.5'; });
+        });
+
+        // Section-aware cursor
+        const sectionCursors = [
+            { id: 'f1', cls: 'cursor-f1' },
+            { id: 'f1-videos', cls: 'cursor-f1' },
+            { id: 'work', cls: 'cursor-camera' },
+            { id: 'home', cls: 'cursor-camera' },
+        ];
+        const cursorObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const match = sectionCursors.find(s => s.id === entry.target.id);
+                    document.body.classList.remove('cursor-f1', 'cursor-camera');
+                    if (match) document.body.classList.add(match.cls);
+                }
+            });
+        }, { threshold: 0.4 });
+        sectionCursors.forEach(s => {
+            const el = document.getElementById(s.id);
+            if (el) cursorObserver.observe(el);
+        });
+
+        // Nav scroll
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+
+        // Tabs
+        function switchTab(id) {
+            document.querySelectorAll('.credits-panel').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('tab-' + id).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Scroll reveal
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Gallery drag
+        const gs = document.getElementById('galleryScroll');
+        let isDown = false, startX, scrollLeft;
+        gs.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - gs.offsetLeft; scrollLeft = gs.scrollLeft; });
+        gs.addEventListener('mouseleave', () => isDown = false);
+        gs.addEventListener('mouseup', () => isDown = false);
+        gs.addEventListener('mousemove', e => {
+            if (!isDown) return; e.preventDefault();
+            gs.scrollLeft = scrollLeft - (e.pageX - gs.offsetLeft - startX) * 1.5;
+        });
+    </script>
+</body>
+
+</html>
