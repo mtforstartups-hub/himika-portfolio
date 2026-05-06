@@ -34,5 +34,10 @@
 		"typescript": "^6.0.2",
 		"typescript-eslint": "^8.58.1",
 		"vite": "^8.0.7"
+	},
+	"dependencies": {
+		"@fontsource-variable/dm-sans": "^5.2.8",
+		"@fontsource-variable/playfair-display": "^5.2.8",
+		"@fontsource-variable/syne": "^5.2.7"
 	}
 }
