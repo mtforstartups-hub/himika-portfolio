@@ -78,12 +78,10 @@
 				>
 					{link.name}
 					<span
-						class="absolute right-0 -bottom-0.75 left-0 h-0.5 origin-left scale-x-0 group-hover:scale-x-100 bg-ember transition-transform duration-300 hover:scale-x-100"
+						class="absolute right-0 -bottom-0.75 left-0 h-0.5 origin-left scale-x-0 bg-ember transition-transform duration-300 group-hover:scale-x-100 hover:scale-x-100"
 					></span>
 				</a>
 			</li>
 		{/each}
 	</ul>
 </nav>
-
-
