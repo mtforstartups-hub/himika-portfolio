@@ -97,8 +97,10 @@
 					: 'translate-y-7 opacity-0'}"
 			>
 				{#each f1Stats as stat (stat.label)}
-					<div class="f1-stat border border-vermillion/25 bg-vermillion/5 p-6">
-						<div class="f1-stat-num font-syne text-3xl leading-none font-extrabold text-vermillion">
+					<div class="f1-stat border border-vermillion/25 bg-vermillion/5 p-3 md:p-6">
+						<div
+							class="f1-stat-num font-syne text-xl leading-none font-extrabold text-vermillion md:text-3xl"
+						>
 							{stat.num}
 						</div>
 						<div class="f1-stat-label mt-2 text-[0.7rem] font-light tracking-wide text-white/40">
@@ -147,7 +149,7 @@
 					alt="F1 racing"
 				/>
 				<span
-					class="f1-badge absolute top-[55%] left-[62%] rotate-3 bg-vermillion px-4 py-2 font-syne text-[0.58rem] font-extrabold tracking-[0.2em] text-white uppercase shadow-lg"
+					class="f1-badge absolute top-[55%] left-[62%] rotate-3 bg-vermillion px-2 py-1 font-syne text-[0.48rem] font-extrabold tracking-[0.2em] text-white uppercase shadow-lg md:px-4 md:py-2 md:text-[0.58rem]"
 				>
 					@himikatalksf1
 				</span>
