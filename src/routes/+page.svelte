@@ -7,6 +7,7 @@
 	import F1 from '$lib/components/F1.svelte';
 	import Dance from '$lib/components/Dance.svelte';
 	import Gallery from '$lib/components/Gallery.svelte';
+	import F1Videos from '$lib/components/F1Videos.svelte';
 </script>
 
 <Hero />
@@ -27,3 +28,5 @@
 <div class="mx-6 h-px bg-linen md:mx-14"></div>
 
 <Brands />
+
+<F1Videos />

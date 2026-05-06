@@ -1,6 +1,8 @@
 @import 'tailwindcss';
 
 @theme {
+	--breakpoint-xs: 30rem;
+
 	--font-syne: 'Syne Variable', sans-serif;
 	--font-display: 'Playfair Display Variable', serif;
 	--font-sans: 'DM Sans Variable', sans-serif;

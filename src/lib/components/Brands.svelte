@@ -61,7 +61,7 @@
 		</p>
 	</div>
 
-	<div class="reels-grid grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+	<div class="reels-grid grid grid-cols-2 gap-6 sm:grid-cols-2 lg:grid-cols-3">
 		{#each deals as deal (deal.id)}
 			<div
 				class="reel-item group relative aspect-9/16 overflow-hidden bg-charcoal transition-all duration-800 {deal.delay} {visible
@@ -78,13 +78,13 @@
 					class="reel-overlay absolute inset-0 flex flex-col items-center justify-center gap-4 p-6 text-center"
 				>
 					<span
-						class="reel-tag bg-ember px-3 py-1 font-syne text-[0.58rem] font-bold tracking-[0.2em] text-white uppercase"
+						class="reel-tag bg-ember px-1.5 py-0.5 font-syne text-[0.45rem] font-bold tracking-[0.2em] text-white uppercase xs:px-3 xs:py-1 xs:text-[0.58rem]"
 					>
 						Brand Collab
 					</span>
 
 					<div
-						class="reel-brand-name font-syne text-[1.1rem] font-extrabold tracking-wider text-white uppercase"
+						class="reel-brand-name font-syne text-[0.7rem] font-extrabold tracking-normal text-white uppercase xs:text-[0.8rem] xs:tracking-wider sm:text-[1.1rem]"
 					>
 						{deal.brand}
 					</div>
@@ -93,7 +93,7 @@
 						href={deal.link}
 						target="_blank"
 						rel="external"
-						class="reel-play-btn flex h-13 w-13 items-center justify-center rounded-full border-2 border-white/40 bg-white/15 text-xl text-white backdrop-blur-xs transition-all duration-300 hover:scale-110 hover:border-ember hover:bg-ember"
+						class="reel-play-btn flex size-9 items-center justify-center rounded-full border-2 border-white/40 bg-white/15 text-xl text-white backdrop-blur-xs transition-all duration-300 hover:scale-110 hover:border-ember hover:bg-ember xs:size-13"
 						aria-label="Play Reel"
 					>
 						▶
@@ -103,7 +103,7 @@
 						href={deal.link}
 						target="_blank"
 						rel="external"
-						class="reel-watch-link flex items-center gap-1.5 font-syne text-[0.62rem] font-bold tracking-[0.15em] text-white/70 uppercase transition-colors duration-300 after:content-['↗'] hover:text-goldenrod"
+						class="reel-watch-link flex items-center gap-1.5 font-syne text-[0.45rem] font-bold tracking-normal text-white/70 uppercase transition-colors duration-300 after:content-['↗'] hover:text-goldenrod xs:text-[0.62rem] xs:tracking-[0.15em]"
 					>
 						Watch Reel
 					</a>
