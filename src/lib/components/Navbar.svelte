@@ -73,12 +73,12 @@
 			<li>
 				<a
 					href="{resolve('/')}{link.href}"
-					class="relative text-[0.7rem] font-medium tracking-[0.18em] text-slate uppercase no-underline transition-colors duration-300 hover:text-charcoal max-md:text-[1.2rem] max-md:tracking-[0.25em]"
+					class="group relative text-[0.7rem] font-medium tracking-[0.18em] text-slate uppercase no-underline transition-colors duration-300 hover:text-charcoal max-md:text-[1.2rem] max-md:tracking-[0.25em]"
 					onclick={() => (mobileMenuOpen = false)}
 				>
 					{link.name}
 					<span
-						class="absolute right-0 -bottom-0.75 left-0 h-0.5 origin-left scale-x-0 bg-ember transition-transform duration-300 hover:scale-x-100"
+						class="absolute right-0 -bottom-0.75 left-0 h-0.5 origin-left scale-x-0 group-hover:scale-x-100 bg-ember transition-transform duration-300 hover:scale-x-100"
 					></span>
 				</a>
 			</li>
@@ -86,22 +86,4 @@
 	</ul>
 </nav>
 
-<style>
-	/* For the custom hover underline effect which is cleaner via pseudo or dedicated span */
-	a:hover span {
-		transform: scaleX(1);
-	}
 
-	    .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -3px;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: var(--color-ember);
-            transform: scaleX(0);
-            transition: transform 0.3s;
-            transform-origin: left;
-        }
-</style>
