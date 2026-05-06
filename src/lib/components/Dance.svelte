@@ -55,9 +55,7 @@
 					? 'translate-y-0 opacity-100'
 					: 'translate-y-7 opacity-0'}"
 			>
-				Trained Since<br /><em class="font-display font-normal text-ember not-italic"
-					>age 8</em
-				>
+				Trained Since<br /><em class="font-display font-normal text-ember not-italic">age 8</em>
 			</h2>
 
 			<div
