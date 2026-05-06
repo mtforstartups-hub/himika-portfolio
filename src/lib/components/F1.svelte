@@ -1,25 +1,9 @@
 <script lang="ts">
 	import f1img1 from '$lib/assets/f1img1.jpg?enhanced';
 	import f1img2 from '$lib/assets/f1img2.jpg?enhanced';
-	import { onMount } from 'svelte';
+	import { reveal } from '$lib/actions/reveal';
 
 	let visible = $state(false);
-	let sectionRef: HTMLElement;
-
-	onMount(() => {
-		const observer = new IntersectionObserver(
-			(entries) => {
-				if (entries[0].isIntersecting) {
-					visible = true;
-					observer.unobserve(sectionRef);
-				}
-			},
-			{ threshold: 0.1 }
-		);
-
-		if (sectionRef) observer.observe(sectionRef);
-		return () => observer.disconnect();
-	});
 
 	const f1Stats = [
 		{ num: '🏎️', label: 'Dedicated F1 content account' },
@@ -44,7 +28,7 @@
 
 <section
 	id="f1"
-	bind:this={sectionRef}
+	use:reveal={(v) => (visible = v)}
 	class="f1-section relative overflow-hidden bg-[#0f0f0f] px-6 py-20 text-white md:px-14 md:py-32"
 >
 	<!-- Background Giant Text -->

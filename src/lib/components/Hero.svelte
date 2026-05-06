@@ -1,5 +1,5 @@
 <script lang="ts">
-	import heroBg from '$lib/assets/hero-bg.jpg';
+	import heroBg from '$lib/assets/hero-bg.jpg?enhanced';
 	import { resolve } from '$app/paths';
 </script>
 
