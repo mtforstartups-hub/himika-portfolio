@@ -4,6 +4,7 @@
 	import About from '$lib/components/About.svelte';
 	import Work from '$lib/components/Work.svelte';
 	import F1 from '$lib/components/F1.svelte';
+	import Dance from '$lib/components/Dance.svelte';
 </script>
 
 <Hero />
@@ -16,3 +17,5 @@
 <Work />
 
 <F1 />
+
+<Dance />

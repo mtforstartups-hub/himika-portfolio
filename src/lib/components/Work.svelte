@@ -282,7 +282,7 @@
 				href={reel.link}
 				target="_blank"
 				rel="external"
-				class="reel-card group flex items-center gap-6 border border-white/8 bg-white/4 p-4 md:p-8 no-underline transition-all duration-300 hover:border-ember hover:bg-ember/6"
+				class="reel-card group flex items-center gap-6 border border-white/8 bg-white/4 p-4 no-underline transition-all duration-300 hover:border-ember hover:bg-ember/6 md:p-8"
 			>
 				<div
 					class="reel-icon flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-ember text-sm text-white transition-transform duration-300 group-hover:scale-110"
