@@ -1,5 +1,6 @@
 <script lang="ts">
 	import heroBg from '$lib/assets/hero-bg.jpg';
+	import { resolve } from '$app/paths';
 </script>
 
 <section
@@ -71,13 +72,13 @@
 			class="hero-cta mt-10 flex animate-fadeUp items-center gap-4 opacity-0 [animation-delay:1s]"
 		>
 			<a
-				href="#work"
+				href="{resolve('/')}#work"
 				class="bg-charcoal px-8 py-3.5 font-syne text-[0.7rem] font-bold tracking-[0.18em] text-white uppercase transition-colors duration-300 hover:bg-ember"
 			>
 				View Work
 			</a>
 			<a
-				href="#contact"
+				href="{resolve('/')}#contact"
 				class="flex items-center gap-1.5 font-syne text-[0.7rem] font-semibold tracking-[0.15em] text-slate uppercase transition-colors duration-300 after:content-['→'] hover:text-ember"
 			>
 				Get in touch
