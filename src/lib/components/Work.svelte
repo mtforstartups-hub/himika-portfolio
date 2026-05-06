@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { reveal } from '$lib/actions/reveal';
 
 	interface CreditItem {
 		year: string;
@@ -16,23 +16,7 @@
 	}
 
 	let visible = $state(false);
-	let sectionRef: HTMLElement;
 	let activeTab = $state<'films' | 'series' | 'short' | 'commercials'>('films');
-
-	onMount(() => {
-		const observer = new IntersectionObserver(
-			(entries) => {
-				if (entries[0].isIntersecting) {
-					visible = true;
-					observer.unobserve(sectionRef);
-				}
-			},
-			{ threshold: 0.1 }
-		);
-
-		if (sectionRef) observer.observe(sectionRef);
-		return () => observer.disconnect();
-	});
 
 	const tabs = [
 		{ id: 'films' as const, label: 'Films' },
@@ -197,7 +181,7 @@
 
 <section
 	id="work"
-	bind:this={sectionRef}
+	use:reveal={(v) => (visible = v)}
 	class="work bg-charcoal px-6 py-16 text-white md:px-14 md:py-24"
 >
 	<div class="work-header mb-14">

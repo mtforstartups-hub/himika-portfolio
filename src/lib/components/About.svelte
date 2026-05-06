@@ -1,26 +1,9 @@
 <script lang="ts">
-	import heroSection from '$lib/assets/hero-section.jpg';
-	import img3 from '$lib/assets/img3.jpg';
-	import { onMount } from 'svelte';
+	import heroSection from '$lib/assets/hero-section.jpg?enhanced';
+	import img3 from '$lib/assets/img3.jpg?enhanced';
+	import { reveal } from '$lib/actions/reveal';
 
-	// Simple scroll reveal logic
 	let visible = $state(false);
-	let sectionRef: HTMLElement;
-
-	onMount(() => {
-		const observer = new IntersectionObserver(
-			(entries) => {
-				if (entries[0].isIntersecting) {
-					visible = true;
-					observer.unobserve(sectionRef);
-				}
-			},
-			{ threshold: 0.1 }
-		);
-
-		if (sectionRef) observer.observe(sectionRef);
-		return () => observer.disconnect();
-	});
 
 	const specs = [
 		{ id: 1, label: 'Screen Age', value: '18–26 years' },
@@ -34,7 +17,7 @@
 
 <section
 	id="about"
-	bind:this={sectionRef}
+	use:reveal={(v) => (visible = v)}
 	class="about grid grid-cols-1 items-center gap-12 px-6 py-16 md:grid-cols-2 md:gap-24 md:px-14 md:py-32"
 >
 	<!-- Images -->

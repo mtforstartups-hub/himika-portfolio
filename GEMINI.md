@@ -28,4 +28,20 @@
   2. If warnings or errors are received, run `bun format`.
   3. Run `bun lint` again and manually fix any remaining errors.
   4. Repeat until `bun lint` reports **zero** errors and warnings.
-- **Persistence:** Never consider a task finished until the linting loop is fully satisfied.
+
+## 6. Image Handling
+
+- **Enhanced Images:** ALWAYS use the `<enhanced:img>` tag for local image assets stored in `src/lib/assets/` to enable SvelteKit's built-in image optimization.
+
+  ## 7. Animations & Reveal Logic
+  - **Scroll Reveal:** ALWAYS use the shared `reveal` action located in `src/lib/actions/reveal.ts` instead of re-implementing `IntersectionObserver` in individual components.
+    - _Pattern:_
+
+      ```svelte
+      <script>
+      	import { reveal } from '$lib/actions/reveal';
+      	let visible = $state(false);
+      </script>
+
+      <section use:reveal={(v) => (visible = v)}>...</section>
+      ```
