@@ -39,22 +39,26 @@
 >
 	<!-- Images -->
 	<div
-		class="about-images relative h-90 transition-all duration-800 md:h-145 {visible
+		class="about-images relative transition-all duration-800 {visible
 			? 'translate-y-0 opacity-100'
 			: 'translate-y-7 opacity-0'}"
 	>
-		<img
-			class="about-img-main absolute top-0 left-0 h-[85%] w-[70%] object-cover shadow-2xl"
+		<!-- Main Image (Relative to provide height) -->
+		<enhanced:img
+			class="about-img-main relative z-0 h-auto w-[85%] shadow-2xl md:w-[75%]"
 			src={heroSection}
 			alt="Himika Bose profile"
 		/>
-		<img
-			class="about-img-secondary absolute right-0 bottom-0 aspect-3/4 h-[52%] w-[52%] border-6 border-canvas object-cover shadow-xl"
+
+		<!-- Secondary Image (Absolute to overlap) -->
+		<enhanced:img
+			class="about-img-secondary absolute -right-2 bottom-[-10%] z-10 h-auto w-[55%] border-4 border-canvas shadow-xl md:right-0 md:bottom-[-15%] md:w-[52%] md:border-6"
 			src={img3}
 			alt="Himika Bose portrait"
 		/>
+
 		<span
-			class="about-badge absolute top-[40%] right-[22%] -rotate-4 bg-goldenrod px-4 py-2 font-syne text-[0.6rem] font-extrabold tracking-[0.15em] text-charcoal uppercase shadow-lg"
+			class="about-badge absolute top-[40%] right-[22%] z-20 -rotate-4 bg-goldenrod px-2 py-1 font-syne text-[0.4rem] font-extrabold tracking-[0.15em] text-charcoal uppercase shadow-lg md:top-[40%] md:right-[22%] md:px-4 md:py-2 md:text-[0.6rem]"
 		>
 			Delhi · Bombay
 		</span>

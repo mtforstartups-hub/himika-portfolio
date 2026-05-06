@@ -8,9 +8,10 @@
 >
 	<!-- Image Side -->
 	<div class="hero-image-side relative h-[50vh] overflow-hidden md:h-full">
-		<img
+		<enhanced:img
 			src={heroBg}
 			alt="Himika Bose"
+			fetchpriority="high"
 			class="h-full w-full scale-[1.06] object-cover object-[center_20%] saturate-[0.9] transition-transform duration-[9s] ease-in-out hover:scale-100 md:object-[center_top]"
 		/>
 		<div
