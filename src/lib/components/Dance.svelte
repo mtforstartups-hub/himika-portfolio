@@ -119,7 +119,7 @@
 				alt="Dance performance"
 			/>
 			<span
-				class="dance-badge absolute top-[78%] -left-4 z-20 rotate-2 bg-lagoon px-4 py-2 font-syne text-[0.58rem] font-extrabold tracking-[0.15em] text-white uppercase shadow-lg"
+				class="dance-badge absolute top-[78%] -left-4 z-20 rotate-2 bg-lagoon px-2 py-1 font-syne text-[0.5rem] font-extrabold text-white uppercase shadow-lg md:px-4 md:py-2 md:text-[0.58rem] md:tracking-[0.15em]"
 			>
 				~100 Stage Shows
 			</span>
