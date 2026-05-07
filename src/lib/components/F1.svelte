@@ -1,6 +1,6 @@
 <script lang="ts">
-	import f1img1 from '$lib/assets/f1img1.jpg?enhanced';
-	import f1img2 from '$lib/assets/f1img2.jpg?enhanced';
+	import f1img1 from '$lib/assets/f1img1.jpg?enhanced&w=480;640;800;1024;1280';
+	import f1img2 from '$lib/assets/f1img2.jpg?enhanced&w=320;480;640;800';
 	import { reveal } from '$lib/actions/reveal';
 
 	let visible = $state(false);
@@ -126,11 +126,13 @@
 					class="f1-img-main absolute top-0 left-0 h-[88%] w-[80%] object-cover contrast-[1.1] saturate-[0.7]"
 					src={f1img1}
 					alt="Himika F1"
+					sizes="(min-width: 768px) 40vw, 80vw"
 				/>
 				<enhanced:img
 					class="f1-img-accent absolute right-0 bottom-0 h-[45%] w-[50%] border-[5px] border-[#0f0f0f] object-cover saturate-[0.7]"
 					src={f1img2}
 					alt="F1 racing"
+					sizes="(min-width: 768px) 25vw, 50vw"
 				/>
 				<span
 					class="f1-badge absolute top-[55%] left-[62%] rotate-3 bg-vermillion px-2 py-1 font-syne text-[0.48rem] font-extrabold tracking-[0.2em] text-white uppercase shadow-lg md:px-4 md:py-2 md:text-[0.58rem]"

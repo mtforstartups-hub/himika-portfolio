@@ -1,5 +1,5 @@
 <script lang="ts">
-	import heroBg from '$lib/assets/hero-bg.jpg?enhanced';
+	import heroBg from '$lib/assets/hero-bg.jpg?enhanced&w=480;640;800;1024;1280;1440;1920';
 	import { resolve } from '$app/paths';
 </script>
 
@@ -13,6 +13,8 @@
 			src={heroBg}
 			alt="Himika Bose"
 			fetchpriority="high"
+			loading="eager"
+			sizes="(min-width: 768px) 50vw, 100vw"
 			class="h-full w-full scale-[1.06] object-cover object-[center_20%] saturate-[0.9] transition-transform duration-[9s] ease-in-out hover:scale-100 md:object-[center_top]"
 		/>
 		<div

@@ -1,7 +1,7 @@
 <script lang="ts">
-	import collab1 from '$lib/assets/collab1.jpg?enhanced';
-	import collab2 from '$lib/assets/collab2.jpg?enhanced';
-	import collab3 from '$lib/assets/collab3.jpg?enhanced';
+	import collab1 from '$lib/assets/collab1.jpg?enhanced&w=320;480;640;800;1024;1280';
+	import collab2 from '$lib/assets/collab2.jpg?enhanced&w=320;480;640;800;1024;1280';
+	import collab3 from '$lib/assets/collab3.jpg?enhanced&w=320;480;640;800;1024;1280';
 	import { reveal } from '$lib/actions/reveal';
 
 	let visible = $state(false);
@@ -71,6 +71,7 @@
 				<enhanced:img
 					src={deal.image}
 					alt={deal.brand}
+					sizes="(min-width: 1024px) 33vw, 50vw"
 					class="reel-thumbnail absolute inset-0 h-full w-full object-cover brightness-[0.6] saturate-[0.7] transition-all duration-400 group-hover:scale-104 group-hover:brightness-[0.5] group-hover:saturate-100"
 				/>
 

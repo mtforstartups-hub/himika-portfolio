@@ -1,6 +1,6 @@
 <script lang="ts">
-	import heroSection from '$lib/assets/hero-section.jpg?enhanced';
-	import img3 from '$lib/assets/img3.jpg?enhanced';
+	import heroSection from '$lib/assets/hero-section.jpg?enhanced&w=480;640;800;1024;1280;1440';
+	import img3 from '$lib/assets/img3.jpg?enhanced&w=320;480;640;800;1024';
 	import { reveal } from '$lib/actions/reveal';
 
 	let visible = $state(false);
@@ -31,6 +31,7 @@
 			class="about-img-main relative z-0 h-auto w-[85%] shadow-2xl md:w-[75%]"
 			src={heroSection}
 			alt="Himika Bose profile"
+			sizes="(min-width: 768px) 40vw, 85vw"
 		/>
 
 		<!-- Secondary Image (Absolute to overlap) -->
@@ -38,6 +39,7 @@
 			class="about-img-secondary absolute -right-2 bottom-[-10%] z-10 h-auto w-[55%] border-4 border-canvas shadow-xl md:right-0 md:bottom-[-15%] md:w-[52%] md:border-6"
 			src={img3}
 			alt="Himika Bose portrait"
+			sizes="(min-width: 768px) 25vw, 55vw"
 		/>
 
 		<span

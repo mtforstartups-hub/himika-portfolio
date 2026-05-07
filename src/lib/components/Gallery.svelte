@@ -1,10 +1,10 @@
 <script lang="ts">
-	import g1 from '$lib/assets/gallery1.jpg?enhanced';
-	import g2 from '$lib/assets/gallery2.jpg?enhanced';
-	import g3 from '$lib/assets/gallery3.jpg?enhanced';
-	import g4 from '$lib/assets/gallery4.jpg?enhanced';
-	import g5 from '$lib/assets/gallery5.jpg?enhanced';
-	import g6 from '$lib/assets/gallery6.jpg?enhanced';
+	import g1 from '$lib/assets/gallery1.jpg?enhanced&w=320;480;640;800;1024;1280;1440';
+	import g2 from '$lib/assets/gallery2.jpg?enhanced&w=320;480;640;800;1024;1280;1440';
+	import g3 from '$lib/assets/gallery3.jpg?enhanced&w=320;480;640;800;1024;1280;1440';
+	import g4 from '$lib/assets/gallery4.jpg?enhanced&w=320;480;640;800;1024;1280;1440';
+	import g5 from '$lib/assets/gallery5.jpg?enhanced&w=320;480;640;800;1024;1280;1440';
+	import g6 from '$lib/assets/gallery6.jpg?enhanced&w=320;480;640;800;1024;1280;1440';
 	import { reveal } from '$lib/actions/reveal';
 
 	let visible = $state(false);
@@ -85,6 +85,7 @@
 			<enhanced:img
 				src={img.src}
 				alt={img.alt}
+				sizes="(min-width: 768px) 400px, 260px"
 				class="gallery-img h-65 w-auto max-w-none shrink-0 object-cover saturate-[0.82] transition-all duration-400 hover:scale-[1.02] hover:saturate-[1.15] md:h-100"
 			/>
 		{/each}
