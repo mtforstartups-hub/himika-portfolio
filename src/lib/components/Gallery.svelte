@@ -22,9 +22,12 @@
 		{ id: 6, src: g6, alt: 'Himika Bose gallery image 6' }
 	];
 
+	let containerOffset: number;
+
 	function handleMouseDown(e: MouseEvent) {
 		isDown = true;
-		startX = e.pageX - scrollContainer.offsetLeft;
+		containerOffset = scrollContainer.offsetLeft;
+		startX = e.pageX - containerOffset;
 		scrollLeft = scrollContainer.scrollLeft;
 	}
 
@@ -39,7 +42,7 @@
 	function handleMouseMove(e: MouseEvent) {
 		if (!isDown) return;
 		e.preventDefault();
-		const x = e.pageX - scrollContainer.offsetLeft;
+		const x = e.pageX - containerOffset;
 		const walk = (x - startX) * 1.5;
 		scrollContainer.scrollLeft = scrollLeft - walk;
 	}
