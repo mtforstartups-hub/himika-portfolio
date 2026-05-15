@@ -53,22 +53,22 @@
 			class="hero-pills mt-6 flex animate-fadeUp flex-wrap gap-2 opacity-0 [animation-delay:0.85s]"
 		>
 			<a
-			href="#work"
+				href="#work"
 				class="pill border border-charcoal px-3.5 py-1.5 font-syne text-[0.6rem] font-bold tracking-[0.15em] text-charcoal uppercase transition-all duration-250 hover:bg-charcoal hover:text-canvas"
 				>Actor</a
 			>
 			<a
-			href="#f1"
+				href="#f1"
 				class="pill border border-ember px-3.5 py-1.5 font-syne text-[0.6rem] font-bold tracking-[0.15em] text-ember uppercase transition-all duration-250 hover:bg-ember hover:text-white"
 				>F1 &#x1F3CE;&#xFE0F;</a
 			>
 			<a
-			href="#dance"
+				href="#dance"
 				class="pill border border-lagoon px-3.5 py-1.5 font-syne text-[0.6rem] font-bold tracking-[0.15em] text-lagoon uppercase transition-all duration-250 hover:bg-lagoon hover:text-white"
 				>Dancer</a
 			>
 			<a
-			href="#about"
+				href="#about"
 				class="pill border border-charcoal px-3.5 py-1.5 font-syne text-[0.6rem] font-bold tracking-[0.15em] text-charcoal uppercase transition-all duration-250 hover:bg-charcoal hover:text-canvas"
 				>Lifestyle Creator</a
 			>
