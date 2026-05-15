@@ -1,6 +1,7 @@
 <script lang="ts">
 	import dance1 from '$lib/assets/dance1.jpg?enhanced&w=480;640;800;1024;1280;1440';
 	import dance2 from '$lib/assets/dance2.jpg?enhanced&w=320;480;640;800;1024';
+	import dance3 from '$lib/assets/dance3.jpg?enhanced&w=320;480;640;800;1024';
 	import { reveal } from '$lib/actions/reveal';
 
 	let visible = $state(false);
@@ -116,7 +117,7 @@
 			/>
 			<enhanced:img
 				class="dance-img-secondary absolute -right-2 bottom-[-10%] z-10 h-auto w-[55%] border-4 border-canvas shadow-xl md:right-0 md:bottom-[-15%] md:w-[55%] md:border-6"
-				src={dance2}
+				src={dance3}
 				alt="Dance performance"
 				sizes="(min-width: 768px) 30vw, 55vw"
 			/>

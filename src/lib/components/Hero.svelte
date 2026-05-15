@@ -26,11 +26,11 @@
 	<div
 		class="hero-text-side relative z-1 flex flex-col justify-center px-10 pt-12 pb-24 max-md:px-6 md:pt-32 md:pr-18 md:pl-10"
 	>
-		<p
+		<!-- <p
 			class="hero-eyebrow mb-6 animate-fadeUp text-[0.65rem] font-bold tracking-[0.3em] text-ember uppercase opacity-0 [animation-delay:0.3s]"
 		>
 			Actor · Creator · F1 Nerd · Dancer
-		</p>
+		</p> -->
 
 		<h1
 			class="hero-name text-clamp-name animate-fadeUp leading-none font-extrabold tracking-[-0.02em] opacity-0 [animation-delay:0.5s]"
@@ -52,21 +52,25 @@
 		<div
 			class="hero-pills mt-6 flex animate-fadeUp flex-wrap gap-2 opacity-0 [animation-delay:0.85s]"
 		>
-			<span
+			<a
+			href="#work"
 				class="pill border border-charcoal px-3.5 py-1.5 font-syne text-[0.6rem] font-bold tracking-[0.15em] text-charcoal uppercase transition-all duration-250 hover:bg-charcoal hover:text-canvas"
-				>Actor</span
+				>Actor</a
 			>
-			<span
+			<a
+			href="#f1"
 				class="pill border border-ember px-3.5 py-1.5 font-syne text-[0.6rem] font-bold tracking-[0.15em] text-ember uppercase transition-all duration-250 hover:bg-ember hover:text-white"
-				>F1 &#x1F3CE;&#xFE0F;</span
+				>F1 &#x1F3CE;&#xFE0F;</a
 			>
-			<span
+			<a
+			href="#dance"
 				class="pill border border-lagoon px-3.5 py-1.5 font-syne text-[0.6rem] font-bold tracking-[0.15em] text-lagoon uppercase transition-all duration-250 hover:bg-lagoon hover:text-white"
-				>Dancer</span
+				>Dancer</a
 			>
-			<span
+			<a
+			href="#about"
 				class="pill border border-charcoal px-3.5 py-1.5 font-syne text-[0.6rem] font-bold tracking-[0.15em] text-charcoal uppercase transition-all duration-250 hover:bg-charcoal hover:text-canvas"
-				>Lifestyle Creator</span
+				>Lifestyle Creator</a
 			>
 		</div>
 
