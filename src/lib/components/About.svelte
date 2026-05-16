@@ -1,6 +1,6 @@
 <script lang="ts">
 	import heroSection from '$lib/assets/hero-section.jpg?enhanced&w=480;640;800;1024;1280;1440';
-	import img3 from '$lib/assets/img3.jpg?enhanced&w=320;480;640;800;1024';
+	import about1 from '$lib/assets/about1.jpg?enhanced&w=320;480;640;800;1024';
 	import { reveal } from '$lib/actions/reveal';
 
 	let visible = $state(false);
@@ -36,14 +36,14 @@
 
 		<!-- Secondary Image (Absolute to overlap) -->
 		<enhanced:img
-			class="about-img-secondary absolute -right-2 bottom-[-10%] z-10 h-auto w-[55%] border-4 border-canvas shadow-xl md:right-0 md:bottom-[-15%] md:w-[52%] md:border-6"
-			src={img3}
+			class="about-img-secondary absolute -right-2 bottom-[-10%] z-10 h-auto w-[35%] border-4 border-canvas shadow-xl md:right-0 md:bottom-[-15%] md:w-[42%] md:border-6"
+			src={about1}
 			alt="Himika Bose portrait"
 			sizes="(min-width: 768px) 25vw, 55vw"
 		/>
 
 		<span
-			class="about-badge absolute top-[40%] right-[22%] z-20 -rotate-4 bg-goldenrod px-2 py-1 font-syne text-[0.4rem] font-extrabold tracking-[0.15em] text-charcoal uppercase shadow-lg md:top-[40%] md:right-[22%] md:px-4 md:py-2 md:text-[0.6rem]"
+			class="about-badge absolute top-4/10 right-[22%] z-20 -rotate-4 bg-goldenrod px-2 py-1 font-syne text-[0.4rem] font-extrabold tracking-[0.15em] text-charcoal uppercase shadow-lg md:top-[40%] md:right-[22%] md:px-4 md:py-2 md:text-[0.6rem]"
 		>
 			Delhi · Bombay
 		</span>
