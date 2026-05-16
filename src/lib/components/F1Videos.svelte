@@ -37,7 +37,7 @@
 			image: f1vids2,
 			link: 'https://www.instagram.com/himikatalksf1/reel/DVaYq27CQ-V/',
 			delay: 'delay-400'
-		},
+		}
 	];
 </script>
 

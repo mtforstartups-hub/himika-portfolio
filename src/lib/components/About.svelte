@@ -74,16 +74,22 @@
 				: 'translate-y-7 opacity-0'}"
 		>
 			<p class="section-body mb-5 text-[0.95rem] leading-[1.85] font-light text-slate">
-				I'm Himikaa Bose — trained at Bristol Old Vic Theatre School, and equally at home in a
+				<!-- I'm Himikaa Bose — trained at Bristol Old Vic Theatre School, and equally at home in a
 				dramatic scene as I am losing my mind at a Grand Prix. I've been acting since 2015 doing
-				short films, and I haven't stopped since.
+				short films, and I haven't stopped since. -->
+				I’m Himikaa Bose, trained at Bristol Old Vic Theatre School, and equally at home in a dramatic
+				scene as I am losing my mind at a Grand Prix. I’ve been acting since 2015, moving across Bollywood,
+				Malayalam, and Bengali projects, while building a body of work across screen, content, and performance.
 			</p>
 			<p class="section-body mb-8 text-[0.95rem] leading-[1.85] font-light text-slate">
-				From Bollywood to Malayalam to Bengali cinema — I've been around the block. Off screen, I'm
+				<!-- From Bollywood to Malayalam to Bengali cinema — I've been around the block. Off screen, I'm
 				a lifestyle and F1 content creator sharing everything from race weekends and motorsport deep
 				dives to everyday life, fashion, and the chaos of living between Delhi and Bombay. Add 80+
 				TV commercials, 20 years of dancing, and 7 years of training, and you've got the full
-				picture.
+				picture. -->
+				Off screen, I’m a lifestyle and F1 content creator sharing everything from race weekends and motorsport
+				deep dives to everyday life, fashion, and the chaos of living between Delhi and Bombay. Add 7
+				years of formal training and 20 years of dancing, and you’ve got the full picture.
 			</p>
 		</div>
 

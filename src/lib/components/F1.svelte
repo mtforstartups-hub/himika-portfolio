@@ -74,7 +74,7 @@
 
 			<!-- Links -->
 			<div
-				class="flex flex-col gap-3  mb-10 transition-all delay-400 duration-800 {visible
+				class="mb-10 flex flex-col gap-3 transition-all delay-400 duration-800 {visible
 					? 'translate-y-0 opacity-100'
 					: 'translate-y-7 opacity-0'}"
 			>
@@ -134,13 +134,13 @@
 					sizes="(min-width: 768px) 40vw, 80vw"
 				/>
 				<enhanced:img
-					class="f1-img-accent absolute right-0 bottom-0 h-[45%] lg:h-6/10 w-[50%] border-[5px] border-[#0f0f0f] object-cover saturate-[0.7]"
+					class="f1-img-accent absolute right-0 bottom-0 h-[45%] w-[50%] border-[5px] border-[#0f0f0f] object-cover saturate-[0.7] lg:h-6/10"
 					src={f1img2}
 					alt="F1 racing"
 					sizes="(min-width: 768px) 25vw, 50vw"
 				/>
 				<span
-					class="f1-badge absolute top-[55%] lg:top-1/3 left-[62%] rotate-3 bg-vermillion px-2 py-1 font-syne text-[0.48rem] font-extrabold tracking-[0.2em] text-white uppercase shadow-lg md:px-4 md:py-2 md:text-[0.58rem]"
+					class="f1-badge absolute top-[55%] left-[62%] rotate-3 bg-vermillion px-2 py-1 font-syne text-[0.48rem] font-extrabold tracking-[0.2em] text-white uppercase shadow-lg md:px-4 md:py-2 md:text-[0.58rem] lg:top-1/3"
 				>
 					@himikatalksf1
 				</span>

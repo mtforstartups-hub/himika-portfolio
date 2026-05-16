@@ -14,7 +14,9 @@
 <footer
 	class="flex flex-col items-center justify-between gap-5 bg-charcoal px-6 py-10 text-center md:flex-row md:gap-0 md:px-14 md:text-left"
 >
-	<div class="font-script text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-widest text-white">
+	<div
+		class="font-script text-xl font-extrabold tracking-widest text-white sm:text-2xl lg:text-3xl"
+	>
 		Himika <span class="text-ember">Bose</span>
 	</div>
 

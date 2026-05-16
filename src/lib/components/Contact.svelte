@@ -1,5 +1,5 @@
 <script lang="ts">
-import portrait from '$lib/assets/footerbg2.png?enhanced';
+	import portrait from '$lib/assets/footerbg2.png?enhanced';
 	import { reveal } from '$lib/actions/reveal';
 
 	let visible = $state(false);
@@ -22,21 +22,21 @@ import portrait from '$lib/assets/footerbg2.png?enhanced';
 			</p>
 			<div class="grid grid-flow-col grid-rows-3 gap-4">
 				<h2
-				class="section-title col-span-2 text-clamp-title font-syne leading-[1.1] font-extrabold tracking-tight transition-all delay-100 duration-800 {visible
-					? 'translate-y-0 opacity-100'
-					: 'translate-y-7 opacity-0'}"
-			>
-				Work with <em class="font-display font-normal text-ember not-italic">me</em>
-			</h2>
-			<p
-				class="section-body col-span-2 row-span-2 max-w-md  text-[0.95rem] leading-[1.85] font-light text-slate transition-all delay-200 duration-800 {visible
-					? 'translate-y-0 opacity-100'
-					: 'translate-y-7 opacity-0'}"
-			>
-				Open to film, web series, theatre, brand campaigns and collaborations. If you're building
-				something interesting, let's talk.
-			</p>
-			<div class="relative row-span-3 w-full max-w-50 justify-self-end sm:justify-self-start">
+					class="section-title text-clamp-title col-span-2 font-syne leading-[1.1] font-extrabold tracking-tight transition-all delay-100 duration-800 {visible
+						? 'translate-y-0 opacity-100'
+						: 'translate-y-7 opacity-0'}"
+				>
+					Work with <em class="font-display font-normal text-ember not-italic">me</em>
+				</h2>
+				<p
+					class="section-body col-span-2 row-span-2 max-w-md text-[0.95rem] leading-[1.85] font-light text-slate transition-all delay-200 duration-800 {visible
+						? 'translate-y-0 opacity-100'
+						: 'translate-y-7 opacity-0'}"
+				>
+					Open to film, web series, theatre, brand campaigns and collaborations. If you're building
+					something interesting, let's talk.
+				</p>
+				<div class="relative row-span-3 w-full max-w-50 justify-self-end sm:justify-self-start">
 					<enhanced:img
 						class="h-auto w-full object-cover saturate-[0.9]"
 						src={portrait}
@@ -52,8 +52,7 @@ import portrait from '$lib/assets/footerbg2.png?enhanced';
 					></div>
 				</div>
 			</div>
-			
-				
+
 			<!-- <p
 				class="section-body mb-10 text-[0.95rem] leading-[1.85] font-light text-slate transition-all delay-200 duration-800 {visible
 					? 'translate-y-0 opacity-100'
@@ -82,7 +81,9 @@ import portrait from '$lib/assets/footerbg2.png?enhanced';
 					>
 						Work Email
 					</div>
-					<div class="contact-info-value text-base font-light text-charcoal">Himika.work@gmail.com</div>
+					<div class="contact-info-value text-base font-light text-charcoal">
+						Himika.work@gmail.com
+					</div>
 				</div>
 			</div>
 
