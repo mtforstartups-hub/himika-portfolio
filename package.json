@@ -39,6 +39,9 @@
 	"dependencies": {
 		"@fontsource-variable/dm-sans": "^5.2.8",
 		"@fontsource-variable/playfair-display": "^5.2.8",
-		"@fontsource-variable/syne": "^5.2.7"
+		"@fontsource-variable/syne": "^5.2.7",
+		"@fontsource/great-vibes": "^5.2.8",
+		"@fontsource/marck-script": "^5.2.8",
+		"@fontsource/tangerine": "^5.2.8"
 	}
 }

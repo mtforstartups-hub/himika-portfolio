@@ -1,5 +1,6 @@
 <script lang="ts">
-	import heroBg from '$lib/assets/hero-bg.jpg?enhanced&w=480;640;800;1024;1280;1440;1920';
+	import '@fontsource/marck-script/400.css'
+	import heroBg from '$lib/assets/hero_img_bg_rem.png?enhanced&w=480;640;800;1024;1280;1440;1920';
 	import { resolve } from '$app/paths';
 </script>
 
@@ -24,7 +25,7 @@
 
 	<!-- Text Side -->
 	<div
-		class="hero-text-side relative z-1 flex flex-col justify-center px-10 pt-12 pb-24 max-md:px-6 md:pt-32 md:pr-18 md:pl-10"
+		class="hero-text-side relative z-1 flex flex-col justify-center px-10 pt-12 pb-24 max-md:px-6 md:pt-32 md:pr-18 md:pl-10 gap-3"
 	>
 		<!-- <p
 			class="hero-eyebrow mb-6 animate-fadeUp text-[0.65rem] font-bold tracking-[0.3em] text-ember uppercase opacity-0 [animation-delay:0.3s]"
