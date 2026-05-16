@@ -6,7 +6,7 @@
 	let visible = $state(false);
 
 	const specs = [
-		{ id: 1, label: 'Screen Age', value: '18–26 years' },
+		{ id: 1, label: 'Screen Age', value: '18–28 years' },
 		{ id: 2, label: 'Height', value: '5\'5" / 165cm' },
 		{ id: 3, label: 'Languages', value: 'English, Hindi, Bengali, Malayalam' },
 		{ id: 4, label: 'Training', value: 'Bristol Old Vic Theatre School' },
@@ -75,15 +75,14 @@
 		>
 			<p class="section-body mb-5 text-[0.95rem] leading-[1.85] font-light text-slate">
 				I'm Himikaa Bose — trained at Bristol Old Vic Theatre School, and equally at home in a
-				dramatic scene as I am losing my mind at a Grand Prix. I've been acting since I was a kid
+				dramatic scene as I am losing my mind at a Grand Prix. I've been acting since 2015
 				doing short films, and I haven't stopped since.
 			</p>
 			<p class="section-body mb-8 text-[0.95rem] leading-[1.85] font-light text-slate">
-				From Bollywood to Malayalam cinema to Bengali shows to Amazon OTT — I've been around the
+				From Bollywood to Malayalam to Bengali cinema — I've been around the
 				block. Off screen, I'm a lifestyle and F1 content creator sharing everything from race
 				weekends and motorsport deep dives to everyday life, fashion, and the chaos of living
-				between Delhi and Bombay. Add 80+ TV commercials and 15 years of dance training and you've
-				got the full picture.
+				between Delhi and Bombay. Add 80+ TV commercials, 20 years of dancing, and 7 years of training, and you've got the full picture.
 			</p>
 		</div>
 
