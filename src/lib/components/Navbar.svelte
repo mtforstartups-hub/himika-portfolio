@@ -1,5 +1,5 @@
 <script lang="ts">
-import '@fontsource/marck-script/400.css';
+	import '@fontsource/marck-script/400.css';
 	import { onMount } from 'svelte';
 	import { resolve } from '$app/paths';
 
@@ -47,7 +47,7 @@ import '@fontsource/marck-script/400.css';
 >
 	<a
 		href={resolve('/')}
-		class="font-script tracking-widest text-xl sm:text-2xl lg:text-3xl font-extrabold text-charcoal no-underline"
+		class="font-script text-xl font-extrabold tracking-widest text-charcoal no-underline sm:text-2xl lg:text-3xl"
 	>
 		Himika <span class="text-ember">Bose</span>
 	</a>

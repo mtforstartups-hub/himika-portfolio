@@ -1,5 +1,5 @@
 <script lang="ts">
-	import '@fontsource/marck-script/400.css'
+	import '@fontsource/marck-script/400.css';
 	import heroBg from '$lib/assets/hero_img_bg_rem.png?enhanced&w=480;640;800;1024;1280;1440;1920';
 	import { resolve } from '$app/paths';
 </script>
@@ -9,7 +9,7 @@
 	id="home"
 >
 	<!-- Image Side -->
-	<div class="hero-image-side relative h-full w-full overflow-hidden md:h-full mt-6 md:mt-0">
+	<div class="hero-image-side relative mt-6 h-full w-full overflow-hidden md:mt-0 md:h-full">
 		<enhanced:img
 			src={heroBg}
 			alt="Himika Bose"
@@ -25,7 +25,7 @@
 
 	<!-- Text Side -->
 	<div
-		class="hero-text-side relative z-1 flex flex-col justify-center px-10 pt-12 pb-24 max-md:px-6 md:pt-32 md:pr-18 md:pl-10 md:gap-3"
+		class="hero-text-side relative z-1 flex flex-col justify-center px-10 pt-12 pb-24 max-md:px-6 md:gap-3 md:pt-32 md:pr-18 md:pl-10"
 	>
 		<!-- <p
 			class="hero-eyebrow mb-6 animate-fadeUp text-[0.65rem] font-bold tracking-[0.3em] text-ember uppercase opacity-0 [animation-delay:0.3s]"
@@ -54,22 +54,22 @@
 			class="hero-pills mt-6 flex animate-fadeUp flex-wrap gap-2 opacity-0 [animation-delay:0.85s]"
 		>
 			<a
-			href="#work"
+				href="#work"
 				class="pill border border-charcoal px-3.5 py-1.5 font-syne text-[0.6rem] font-bold tracking-[0.15em] text-charcoal uppercase transition-all duration-250 hover:bg-charcoal hover:text-canvas"
 				>Actor</a
 			>
 			<a
-			href="#f1"
+				href="#f1"
 				class="pill border border-ember px-3.5 py-1.5 font-syne text-[0.6rem] font-bold tracking-[0.15em] text-ember uppercase transition-all duration-250 hover:bg-ember hover:text-white"
 				>F1 &#x1F3CE;&#xFE0F;</a
 			>
 			<a
-			href="#dance"
+				href="#dance"
 				class="pill border border-lagoon px-3.5 py-1.5 font-syne text-[0.6rem] font-bold tracking-[0.15em] text-lagoon uppercase transition-all duration-250 hover:bg-lagoon hover:text-white"
 				>Dancer</a
 			>
 			<a
-			href="#about"
+				href="#about"
 				class="pill border border-charcoal px-3.5 py-1.5 font-syne text-[0.6rem] font-bold tracking-[0.15em] text-charcoal uppercase transition-all duration-250 hover:bg-charcoal hover:text-canvas"
 				>Lifestyle Creator</a
 			>
