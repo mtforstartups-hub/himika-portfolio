@@ -47,7 +47,7 @@ import '@fontsource/marck-script/400.css';
 >
 	<a
 		href={resolve('/')}
-		class="font-script tracking-widest text-3xl font-extrabold text-charcoal no-underline"
+		class="font-script tracking-widest text-xl sm:text-2xl lg:text-3xl font-extrabold text-charcoal no-underline"
 	>
 		Himika <span class="text-ember">Bose</span>
 	</a>

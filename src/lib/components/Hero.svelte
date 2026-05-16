@@ -9,14 +9,14 @@
 	id="home"
 >
 	<!-- Image Side -->
-	<div class="hero-image-side relative h-[50vh] overflow-hidden md:h-full">
+	<div class="hero-image-side relative h-full w-full overflow-hidden md:h-full mt-6 md:mt-0">
 		<enhanced:img
 			src={heroBg}
 			alt="Himika Bose"
 			fetchpriority="high"
 			loading="eager"
 			sizes="(min-width: 768px) 50vw, 100vw"
-			class="h-full w-full scale-[1.06] object-cover object-[center_20%] saturate-[0.9] transition-transform duration-[9s] ease-in-out hover:scale-100 md:object-[center_top]"
+			class="h-full w-full object-[center_20%] saturate-[0.9] transition-transform duration-[9s] ease-in-out hover:scale-100 md:object-[center_top]"
 		/>
 		<div
 			class="absolute inset-0 bg-linear-to-b from-transparent via-canvas/20 to-canvas md:bg-linear-to-r md:from-transparent md:via-transparent md:via-55% md:to-canvas md:to-98%"
@@ -25,7 +25,7 @@
 
 	<!-- Text Side -->
 	<div
-		class="hero-text-side relative z-1 flex flex-col justify-center px-10 pt-12 pb-24 max-md:px-6 md:pt-32 md:pr-18 md:pl-10 gap-3"
+		class="hero-text-side relative z-1 flex flex-col justify-center px-10 pt-12 pb-24 max-md:px-6 md:pt-32 md:pr-18 md:pl-10 md:gap-3"
 	>
 		<!-- <p
 			class="hero-eyebrow mb-6 animate-fadeUp text-[0.65rem] font-bold tracking-[0.3em] text-ember uppercase opacity-0 [animation-delay:0.3s]"
