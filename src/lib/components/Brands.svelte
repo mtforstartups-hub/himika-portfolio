@@ -27,6 +27,21 @@
 			image: collab3,
 			link: 'https://www.instagram.com/reel/DTCdyGRCiMp/',
 			delay: 'delay-200'
+		},
+
+		{
+			id: 4,
+			brand: 'Maybelline',
+			image: collab2,
+			link: 'https://www.instagram.com/p/CrBQD4DpGui/',
+			delay: 'delay-100'
+		},
+		{
+			id: 5,
+			brand: 'Parachute',
+			image: collab3,
+			link: 'https://www.instagram.com/reel/DTCdyGRCiMp/',
+			delay: 'delay-200'
 		}
 	];
 </script>
@@ -61,7 +76,7 @@
 		</p>
 	</div>
 
-	<div class="reels-grid grid grid-cols-2 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+	<div class="reels-grid grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-5">
 		{#each deals as deal (deal.id)}
 			<div
 				class="reel-item group relative aspect-9/16 overflow-hidden bg-charcoal transition-all duration-800 {deal.delay} {visible

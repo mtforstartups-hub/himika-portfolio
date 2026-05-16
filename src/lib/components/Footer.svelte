@@ -1,4 +1,5 @@
 <script lang="ts">
+	import '@fontsource/ms-madi/400.css';
 	import { resolve } from '$app/paths';
 
 	const links = [
@@ -13,11 +14,11 @@
 <footer
 	class="flex flex-col items-center justify-between gap-5 bg-charcoal px-6 py-10 text-center md:flex-row md:gap-0 md:px-14 md:text-left"
 >
-	<div class="font-syne text-[1.1rem] font-extrabold tracking-wider text-white">
-		HIMIKA <span class="text-ember">BOSE</span>
+	<div class="font-script text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-widest text-white">
+		Himika <span class="text-ember">Bose</span>
 	</div>
 
-	<p class="text-[0.7rem] tracking-widest text-white/30">© 2026 Himikaa Bose · Delhi · Bombay</p>
+	<p class="text-[0.7rem] tracking-widest text-white">© 2026 Himikaa Bose</p>
 
 	<ul class="flex list-none justify-center gap-6">
 		{#each links as link (link.name)}

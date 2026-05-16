@@ -24,13 +24,13 @@
 
 <Dance />
 
-<Gallery />
-
 <div class="mx-6 h-px bg-linen md:mx-14"></div>
 
 <Brands />
 
 <F1Videos />
+
+<Gallery />
 
 <div class="mx-6 h-px bg-linen md:mx-14"></div>
 

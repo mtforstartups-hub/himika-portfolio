@@ -1,5 +1,5 @@
 <script lang="ts">
-	import '@fontsource/marck-script/400.css';
+	import '@fontsource/ms-madi/400.css';
 	import { onMount } from 'svelte';
 	import { resolve } from '$app/paths';
 

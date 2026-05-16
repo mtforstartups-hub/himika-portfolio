@@ -10,6 +10,7 @@
         "@fontsource-variable/syne": "^5.2.7",
         "@fontsource/great-vibes": "^5.2.8",
         "@fontsource/marck-script": "^5.2.8",
+        "@fontsource/ms-madi": "^5.2.7",
         "@fontsource/tangerine": "^5.2.8",
       },
       "devDependencies": {
@@ -123,6 +124,8 @@
     "@fontsource/great-vibes": ["@fontsource/great-vibes@5.2.8", "", {}, "sha512-/PATz436NGixjNaigierUpv50wfNv2UhAAijcCPkn4ynvl41x66TCLbXVSVfp4pth9gjWnGqgoj0lVIhHapAuw=="],
 
     "@fontsource/marck-script": ["@fontsource/marck-script@5.2.8", "", {}, "sha512-ZNHTZy/wkZYH4y/kUeAK4jvsWeZ5pWrbwv97qgit24Fv+GupQVaLig8uOwVSN1GgtYWPTMnLROEHRoqCzgvHXA=="],
+
+    "@fontsource/ms-madi": ["@fontsource/ms-madi@5.2.7", "", {}, "sha512-O2glllvXfcsLR8KGVfCYXUiXib1zaAWg7wL4TisFZ5MhLQUTG6kNm+rCaSIv0S03rCNz+UsEK2SiI//MsyQljw=="],
 
     "@fontsource/tangerine": ["@fontsource/tangerine@5.2.8", "", {}, "sha512-UUp5X98B7J1GfGu5JsGgs5Cbbl2nSp99J8HZVdxe7TBKnAESkwTpDIQJlud8tKufRrOFA7vGtzwaTW5t82s4mA=="],
 

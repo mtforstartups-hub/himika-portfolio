@@ -31,7 +31,13 @@
 			image: f1vids4,
 			link: 'https://www.instagram.com/himika_bose/reel/DRMB2NkkU5r/',
 			delay: 'delay-300'
-		}
+		},
+		{
+			id: 5,
+			image: f1vids2,
+			link: 'https://www.instagram.com/himikatalksf1/reel/DVaYq27CQ-V/',
+			delay: 'delay-400'
+		},
 	];
 </script>
 
@@ -57,7 +63,7 @@
 		</h2>
 	</div>
 
-	<div class="f1-reels-grid grid grid-cols-2 gap-4 lg:grid-cols-4">
+	<div class="f1-reels-grid grid grid-cols-2 gap-4 lg:grid-cols-5">
 		{#each videos as video (video.id)}
 			<div
 				class="f1-reel-item group relative aspect-9/16 overflow-hidden bg-[#1a1a1a] transition-all duration-800 {video.delay} {visible
