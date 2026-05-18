@@ -43,6 +43,7 @@
 		"@fontsource/great-vibes": "^5.2.8",
 		"@fontsource/marck-script": "^5.2.8",
 		"@fontsource/ms-madi": "^5.2.7",
-		"@fontsource/tangerine": "^5.2.8"
+		"@fontsource/tangerine": "^5.2.8",
+		"gsap": "^3.15.0"
 	}
 }

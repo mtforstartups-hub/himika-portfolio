@@ -9,6 +9,7 @@
 	import Brands from '$lib/components/Brands.svelte';
 	import F1Videos from '$lib/components/F1Videos.svelte';
 	import Contact from '$lib/components/Contact.svelte';
+	import HeadShots from '$lib/components/HeadShots.svelte';
 </script>
 
 <Hero />
@@ -19,6 +20,7 @@
 <div class="mx-6 h-px bg-linen md:mx-14"></div>
 
 <Work />
+<HeadShots />
 
 <F1 />
 
