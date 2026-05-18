@@ -254,7 +254,6 @@
 		>
 			<!-- INTRO SLIDE -->
 			<div id="intro-card" class="absolute max-w-2xl px-4 text-center">
-				
 				<h3
 					class="font-syne text-3xl font-extrabold tracking-wide text-white uppercase md:text-5xl"
 				>
@@ -391,9 +390,7 @@
 					<div id="photo-6-img-container" class="absolute inset-0 overflow-hidden">
 						<enhanced:img src={look6} alt="Spotlight" class="h-full w-full object-cover" />
 					</div>
-					<div
-						class="absolute inset-0 z-15 bg-linear-to-t from-neutral-950 via-transparent"
-					></div>
+					<div class="absolute inset-0 z-15 bg-linear-to-t from-neutral-950 via-transparent"></div>
 				</div>
 			</div>
 
