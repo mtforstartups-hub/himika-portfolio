@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '@fontsource/marck-script/400.css';
-	import heroBg from '$lib/assets/hero_img_bg_rem.png?enhanced&w=480;640;800;1024;1280;1440;1920';
+	import heroBg from '$lib/assets/Himika Bose.jpeg?enhanced&w=480;640;800;1024;1280;1440;1920';
 	import { resolve } from '$app/paths';
 </script>
 
