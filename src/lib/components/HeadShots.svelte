@@ -268,17 +268,17 @@
 			<!-- PHOTO 1: Single, Scale & Fade -->
 			<div
 				id="photo-1"
-				class="invisible absolute flex h-[55vh] w-[85vw] max-w-95 cursor-pointer flex-col justify-end overflow-hidden rounded-xl border border-white/10 opacity-0 shadow-2xl shadow-black/80"
+				class="invisible absolute flex h-fit max-h-[70vh] w-[85vw] max-w-95 cursor-pointer flex-col justify-end overflow-hidden rounded-xl border border-white/10 opacity-0 shadow-2xl shadow-black/80"
 			>
 				<enhanced:img
 					src={look1}
 					alt="Dramatic Headshot"
-					class="absolute inset-0 h-full w-full object-cover transition-transform duration-700"
+					class="h-full w-full object-contain transition-transform duration-700"
 				/>
 				<div
 					class="absolute inset-0 z-10 bg-linear-to-t from-black/90 via-black/20 to-transparent"
 				></div>
-				<div class="z-20 p-6">
+				<div class="absolute right-0 bottom-0 left-0 z-20 p-6">
 					<span class="mb-1 block font-mono text-[10px] tracking-widest text-goldenrod uppercase"
 						>Look 01 // Dramatic</span
 					>
@@ -294,13 +294,9 @@
 			<!-- PHOTO 2, 3, 4: Collage -->
 			<div
 				id="photo-2"
-				class="invisible absolute top-[10%] left-[5%] h-[35vh] w-[45vw] cursor-pointer overflow-hidden rounded-lg border border-white/5 opacity-0 shadow-xl shadow-black/60 md:h-[42vh] md:w-70"
+				class="invisible absolute top-[10%] left-[5%] h-fit max-h-[42vh] w-[45vw] cursor-pointer overflow-hidden rounded-lg border border-white/5 opacity-0 shadow-xl shadow-black/60 md:w-70"
 			>
-				<enhanced:img
-					src={look2}
-					alt="Look 2"
-					class="absolute inset-0 h-full w-full object-cover"
-				/>
+				<enhanced:img src={look2} alt="Look 2" class="h-full w-full object-contain" />
 				<div class="absolute inset-0 z-10 bg-linear-to-t from-black/80 via-transparent"></div>
 				<div class="absolute bottom-0 z-20 p-4">
 					<span class="block font-mono text-[8px] tracking-widest text-goldenrod uppercase"
@@ -311,13 +307,9 @@
 
 			<div
 				id="photo-3"
-				class="invisible absolute top-[25%] right-[5%] h-[38vh] w-[45vw] cursor-pointer overflow-hidden rounded-lg border border-white/5 opacity-0 shadow-xl shadow-black/60 md:h-[48vh] md:w-[320px]"
+				class="invisible absolute top-[25%] right-[5%] h-fit max-h-[48vh] w-[45vw] cursor-pointer overflow-hidden rounded-lg border border-white/5 opacity-0 shadow-xl shadow-black/60 md:w-[320px]"
 			>
-				<enhanced:img
-					src={look3}
-					alt="Look 3"
-					class="absolute inset-0 h-full w-full object-cover"
-				/>
+				<enhanced:img src={look3} alt="Look 3" class="h-full w-full object-contain" />
 				<div class="absolute inset-0 z-10 bg-linear-to-t from-black/80 via-transparent"></div>
 				<div class="absolute bottom-0 z-20 p-4">
 					<span class="block font-mono text-[8px] tracking-widest text-goldenrod uppercase"
@@ -328,13 +320,9 @@
 
 			<div
 				id="photo-4"
-				class="invisible absolute bottom-[10%] left-[25%] h-[32vh] w-[50vw] cursor-pointer overflow-hidden rounded-lg border border-white/5 opacity-0 shadow-xl shadow-black/60 md:h-[40vh] md:w-65"
+				class="invisible absolute bottom-[10%] left-[25%] h-fit max-h-[40vh] w-[50vw] cursor-pointer overflow-hidden rounded-lg border border-white/5 opacity-0 shadow-xl shadow-black/60 md:w-65"
 			>
-				<enhanced:img
-					src={look4}
-					alt="Look 4"
-					class="absolute inset-0 h-full w-full object-cover"
-				/>
+				<enhanced:img src={look4} alt="Look 4" class="h-full w-full object-contain" />
 				<div class="absolute inset-0 z-10 bg-linear-to-t from-black/80 via-transparent"></div>
 				<div class="absolute bottom-0 z-20 p-4">
 					<span class="block font-mono text-[8px] tracking-widest text-goldenrod uppercase"
@@ -346,17 +334,13 @@
 			<!-- PHOTO 5: Slide & Focus -->
 			<div
 				id="photo-5"
-				class="invisible absolute flex h-[58vh] w-[85vw] max-w-105 cursor-pointer flex-col justify-end overflow-hidden rounded-xl border border-white/10 opacity-0 shadow-2xl shadow-black/80"
+				class="invisible absolute flex h-fit max-h-[75vh] w-[85vw] max-w-105 cursor-pointer flex-col justify-end overflow-hidden rounded-xl border border-white/10 opacity-0 shadow-2xl shadow-black/80"
 			>
-				<enhanced:img
-					src={look5}
-					alt="Cinematic Profile"
-					class="absolute inset-0 h-full w-full object-cover"
-				/>
+				<enhanced:img src={look5} alt="Cinematic Profile" class="h-full w-full object-contain" />
 				<div
 					class="absolute inset-0 z-10 bg-linear-to-t from-black/95 via-black/30 to-transparent"
 				></div>
-				<div class="z-20 p-6">
+				<div class="absolute right-0 bottom-0 left-0 z-20 p-6">
 					<span class="mb-1 block font-mono text-[10px] tracking-widest text-goldenrod uppercase"
 						>Look 05 // Range</span
 					>
@@ -385,10 +369,10 @@
 				</div>
 				<div
 					id="photo-6-mask-wrapper"
-					class="relative h-[55vh] w-[90vw] overflow-hidden rounded-2xl border border-goldenrod/30 shadow-2xl md:h-[65vh] md:w-150"
+					class="relative h-fit max-h-[80vh] w-[90vw] overflow-hidden rounded-2xl border border-goldenrod/30 shadow-2xl md:w-150"
 				>
-					<div id="photo-6-img-container" class="absolute inset-0 overflow-hidden">
-						<enhanced:img src={look6} alt="Spotlight" class="h-full w-full object-cover" />
+					<div id="photo-6-img-container" class="relative overflow-hidden">
+						<enhanced:img src={look6} alt="Spotlight" class="h-full w-full object-contain" />
 					</div>
 					<div class="absolute inset-0 z-15 bg-linear-to-t from-neutral-950 via-transparent"></div>
 				</div>
@@ -401,13 +385,9 @@
 			>
 				<div
 					id="photo-7"
-					class="relative h-[25vh] w-[80vw] cursor-pointer overflow-hidden rounded-xl border border-white/5 shadow-xl shadow-black/60 md:h-[55vh] md:w-[320px]"
+					class="relative h-fit max-h-[60vh] w-[80vw] cursor-pointer overflow-hidden rounded-xl border border-white/5 shadow-xl shadow-black/60 md:w-[320px]"
 				>
-					<enhanced:img
-						src={look7}
-						alt="Look 7"
-						class="absolute inset-0 h-full w-full object-cover"
-					/>
+					<enhanced:img src={look7} alt="Look 7" class="h-full w-full object-contain" />
 					<div class="absolute inset-0 z-10 bg-linear-to-t from-black/80 via-transparent"></div>
 					<div class="absolute bottom-0 z-20 p-4">
 						<span class="block font-mono text-[10px] tracking-widest text-goldenrod uppercase"
@@ -430,13 +410,9 @@
 
 				<div
 					id="photo-8"
-					class="relative h-[25vh] w-[80vw] cursor-pointer overflow-hidden rounded-xl border border-white/5 shadow-xl shadow-black/60 md:h-[55vh] md:w-[320px]"
+					class="relative h-fit max-h-[60vh] w-[80vw] cursor-pointer overflow-hidden rounded-xl border border-white/5 shadow-xl shadow-black/60 md:w-[320px]"
 				>
-					<enhanced:img
-						src={look8}
-						alt="Look 8"
-						class="absolute inset-0 h-full w-full object-cover"
-					/>
+					<enhanced:img src={look8} alt="Look 8" class="h-full w-full object-contain" />
 					<div class="absolute inset-0 z-10 bg-linear-to-t from-black/80 via-transparent"></div>
 					<div class="absolute bottom-0 z-20 p-4">
 						<span class="block font-mono text-[10px] tracking-widest text-goldenrod uppercase"
