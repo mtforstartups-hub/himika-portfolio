@@ -1,4 +1,5 @@
 <script lang="ts">
+	import '@fontsource/ms-madi/400.css';
 	import { onMount } from 'svelte';
 	import { resolve } from '$app/paths';
 
@@ -46,9 +47,9 @@
 >
 	<a
 		href={resolve('/')}
-		class="font-syne text-[1.1rem] font-extrabold tracking-wider text-charcoal no-underline"
+		class="font-script text-xl font-extrabold tracking-widest text-charcoal no-underline sm:text-2xl lg:text-3xl"
 	>
-		HIMIKA <span class="text-ember">BOSE</span>
+		Himika <span class="text-ember">Bose</span>
 	</a>
 
 	<!-- Mobile Toggle -->

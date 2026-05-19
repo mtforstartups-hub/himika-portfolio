@@ -1,9 +1,14 @@
 <script lang="ts">
 	import dance1 from '$lib/assets/dance1.jpg?enhanced&w=480;640;800;1024;1280;1440';
 	import dance3 from '$lib/assets/dance3.jpg?enhanced&w=320;480;640;800;1024';
+	import dance4 from '$lib/assets/dance4.jpg?enhanced&w=320;480;640;800;1024';
+	import dance5 from '$lib/assets/dance5.jpg?enhanced&w=320;480;640;800;1024';
 	import { reveal } from '$lib/actions/reveal';
 
 	let visible = $state(false);
+	let activeImage = $state<number | null>(null);
+	let mouseX = $state(0);
+	let mouseY = $state(0);
 
 	const danceStyles = [
 		'Jazz',
@@ -11,7 +16,7 @@
 		'Ballet',
 		'Bollywood',
 		'Hip Hop',
-		'Street Jazz',
+		'Social dancing',
 		'Lyrical'
 	];
 
@@ -33,6 +38,19 @@
 			desc: 'Teaching Adults Jazz · 2 years — The Danceworx'
 		}
 	];
+
+	function handleMouseMove(e: MouseEvent) {
+		const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+		const x = e.clientX - rect.left - rect.width / 2;
+		const y = e.clientY - rect.top - rect.height / 2;
+		mouseX = x * 0.05;
+		mouseY = y * 0.05;
+	}
+
+	function handleMouseLeave() {
+		mouseX = 0;
+		mouseY = 0;
+	}
 </script>
 
 <section
@@ -64,9 +82,12 @@
 					: 'translate-y-7 opacity-0'}"
 			>
 				<p class="section-body mb-8 text-[0.95rem] leading-[1.85] font-light text-slate">
-					Dance isn't just something Himikaa does — it's how she moved into the world of
-					storytelling. With over 15 years of rigorous training and professional performance, her
-					background in movement informs every role she takes on screen.
+					<!-- Dance isn't just something Himikaa does — it's how she moved into the world of
+          storytelling. With 7 years of training, 20 years of dancing and professional performance, her
+          background in movement informs every role she takes on screen. -->
+					Dance is my first language of performance. It shaped the way I understand rhythm, emotion, presence,
+					and storytelling. With 20 years of dancing and 7 years of formal training, my background in
+					movement continues to influence the way I approach every character and every frame.
 				</p>
 
 				<!-- Styles Chips -->
@@ -102,29 +123,132 @@
 			</div>
 		</div>
 
-		<!-- Images (Natural Aspect Ratio Strategy) -->
+		<!-- Images Group (Interactive & Parallax) -->
+
 		<div
-			class="dance-images relative transition-all duration-800 {visible
+			class="dance-images relative min-h-75 w-full transition-all duration-800 {visible
 				? 'translate-y-0 opacity-100'
 				: 'translate-y-7 opacity-0'}"
+			onmousemove={handleMouseMove}
+			onmouseleave={handleMouseLeave}
+			role="group"
 		>
-			<enhanced:img
-				class="dance-img-main relative z-0 h-auto w-[85%] shadow-2xl md:w-[75%]"
-				src={dance1}
-				alt="Dance pose"
-				sizes="(min-width: 768px) 40vw, 85vw"
-			/>
-			<enhanced:img
-				class="dance-img-secondary absolute -right-2 bottom-[-10%] z-10 h-auto w-[55%] border-4 border-canvas shadow-xl md:right-0 md:bottom-[-15%] md:w-[55%] md:border-6"
-				src={dance3}
-				alt="Dance performance"
-				sizes="(min-width: 768px) 30vw, 55vw"
-			/>
-			<span
-				class="dance-badge absolute top-[78%] -left-4 z-20 rotate-2 bg-lagoon px-2 py-1 font-syne text-[0.5rem] font-extrabold text-white uppercase shadow-lg md:px-4 md:py-2 md:text-[0.58rem] md:tracking-[0.15em]"
+			<!-- Peeking Image 1 (Top Left) -->
+			<div
+				role="button"
+				tabindex="0"
+				class="absolute -top-1/4 -left-4 w-[40%] cursor-pointer border-4 border-canvas shadow-lg transition-all duration-500 ease-out md:-top-12 md:-left-8 md:w-[35%] {activeImage ===
+				3
+					? 'z-50 scale-105 shadow-2xl'
+					: 'z-0 hover:scale-[1.02]'}"
+				style="transform: translate3d({mouseX * -1.5}px, {mouseY * -1.5}px, 0);"
+				onclick={() => (activeImage = activeImage === 3 ? null : 3)}
+				onkeydown={(e) => e.key === 'Enter' && (activeImage = 3)}
+				onmouseenter={() => (activeImage = 3)}
+				onmouseleave={() => (activeImage = null)}
 			>
-				~100 Stage Shows
-			</span>
+				<enhanced:img
+					class="h-auto w-full object-cover"
+					src={dance2}
+					alt="Dance pose peeking left"
+					sizes="(min-width: 768px) 20vw, 40vw"
+				/>
+			</div>
+
+			<!-- Peeking Image 2 (Top Right) -->
+			<div
+				role="button"
+				tabindex="0"
+				class="absolute -top-6 -right-4 w-[38%] cursor-pointer border-4 border-canvas shadow-lg transition-all duration-500 ease-out md:-top-10 md:-right-8 md:w-[32%] {activeImage ===
+				4
+					? 'z-50 scale-105 shadow-2xl'
+					: 'z-0 hover:scale-[1.02]'}"
+				style="transform: translate3d({mouseX * 2}px, {mouseY * 2}px, 0);"
+				onclick={() => (activeImage = activeImage === 4 ? null : 4)}
+				onkeydown={(e) => e.key === 'Enter' && (activeImage = 4)}
+				onmouseenter={() => (activeImage = 4)}
+				onmouseleave={() => (activeImage = null)}
+			>
+				<enhanced:img
+					class="h-auto w-full object-cover"
+					src={dance4}
+					alt="Dance pose peeking right"
+					sizes="(min-width: 768px) 20vw, 40vw"
+				/>
+			</div>
+
+			<!-- Main Center Image -->
+			<div
+				role="button"
+				tabindex="0"
+				class="relative left-[20%] w-[45%] cursor-pointer transition-all duration-500 ease-out {activeImage ===
+				1
+					? 'z-50 scale-[1.02] shadow-2xl'
+					: 'z-40 shadow-xl'}"
+				style="transform: translate3d({mouseX * 0.5}px, {mouseY * 0.5}px, 0);"
+				onclick={() => (activeImage = activeImage === 1 ? null : 1)}
+				onkeydown={(e) => e.key === 'Enter' && (activeImage = 1)}
+				onmouseenter={() => (activeImage = 1)}
+				onmouseleave={() => (activeImage = null)}
+			>
+				<enhanced:img
+					class="h-auto w-full"
+					src={dance1}
+					alt="Main dance pose"
+					sizes="(min-width: 768px) 40vw, 85vw"
+				/>
+			</div>
+
+			<!-- Secondary Image (Bottom Right) -->
+			<div
+				role="button"
+				tabindex="0"
+				class="absolute -right-2 bottom-[-10%] w-[55%] cursor-pointer border-4 border-canvas shadow-xl transition-all duration-500 ease-out md:right-0 md:bottom-[-15%] md:border-6 {activeImage ===
+				2
+					? 'z-50 scale-105 shadow-2xl'
+					: 'z-20 hover:scale-[1.02]'}"
+				style="transform: translate3d({mouseX * 1.2}px, {mouseY * 1.2}px, 0);"
+				onclick={() => (activeImage = activeImage === 2 ? null : 2)}
+				onkeydown={(e) => e.key === 'Enter' && (activeImage = 2)}
+				onmouseenter={() => (activeImage = 2)}
+				onmouseleave={() => (activeImage = null)}
+			>
+				<enhanced:img
+					class="h-auto w-full"
+					src={dance3}
+					alt="Dance performance"
+					sizes="(min-width: 768px) 30vw, 55vw"
+				/>
+			</div>
+
+			<div
+				role="button"
+				tabindex="0"
+				class="absolute bottom-[-10%] -left-2 w-[25%] cursor-pointer border-4 border-canvas shadow-xl transition-all duration-500 ease-out md:bottom-[-15%] md:left-0 md:border-6 {activeImage ===
+				5
+					? 'z-50 scale-105 shadow-2xl'
+					: 'z-20 hover:scale-[1.02]'}"
+				style="transform: translate3d({mouseX * 1.5}px, {mouseY * 1.5}px, 0);"
+				onclick={() => (activeImage = activeImage === 5 ? null : 5)}
+				onkeydown={(e) => e.key === 'Enter' && (activeImage = 5)}
+				onmouseenter={() => (activeImage = 5)}
+				onmouseleave={() => (activeImage = null)}
+			>
+				<enhanced:img
+					class="h-auto w-full"
+					src={dance5}
+					alt="Dance performance"
+					sizes="(min-width: 768px) 30vw, 55vw"
+				/>
+			</div>
+
+			<!-- Floating Badge -->
+			<!-- <span
+        class="dance-badge pointer-events-none absolute top-[78%] -left-4 z-30 bg-lagoon px-2 py-1 font-syne text-[0.5rem] font-extrabold text-white uppercase shadow-lg transition-transform duration-500 ease-out md:px-4 md:py-2 md:text-[0.58rem] md:tracking-[0.15em]"
+        style="transform: translate3d({mouseX * 2.5}px, {mouseY * 2.5}px, 0) rotate(2deg);"
+      >
+        ~100 Stage Shows
+      </span> -->
 		</div>
 	</div>
 </section>

@@ -8,10 +8,6 @@
 	import { reveal } from '$lib/actions/reveal';
 
 	let visible = $state(false);
-	let scrollContainer: HTMLDivElement;
-	let isDown = $state(false);
-	let startX: number;
-	let scrollLeft: number;
 
 	const images = [
 		{ id: 1, src: g1, alt: 'Himika Bose gallery image 1' },
@@ -22,36 +18,20 @@
 		{ id: 6, src: g6, alt: 'Himika Bose gallery image 6' }
 	];
 
-	let containerOffset: number;
-
-	function handleMouseDown(e: MouseEvent) {
-		isDown = true;
-		containerOffset = scrollContainer.offsetLeft;
-		startX = e.pageX - containerOffset;
-		scrollLeft = scrollContainer.scrollLeft;
-	}
-
-	function handleMouseLeave() {
-		isDown = false;
-	}
-
-	function handleMouseUp() {
-		isDown = false;
-	}
-
-	function handleMouseMove(e: MouseEvent) {
-		if (!isDown) return;
-		e.preventDefault();
-		const x = e.pageX - containerOffset;
-		const walk = (x - startX) * 1.5;
-		scrollContainer.scrollLeft = scrollLeft - walk;
-	}
+	// Duplicate images for a seamless infinite loop
+	const displayImages = [
+		...images,
+		...images.map((img) => ({
+			...img,
+			id: img.id + images.length
+		}))
+	];
 </script>
 
 <section
 	id="gallery"
 	use:reveal={(v) => (visible = v)}
-	class="gallery bg-white px-6 py-16 md:px-14 md:py-24"
+	class="gallery overflow-hidden bg-white px-6 py-16 md:px-14 md:py-24"
 >
 	<div class="gallery-header mb-12">
 		<p
@@ -70,41 +50,31 @@
 		</h2>
 	</div>
 
+	<!-- Marquee Container -->
 	<div
-		bind:this={scrollContainer}
-		class="gallery-scroll no-scrollbar flex cursor-grab gap-3 overflow-x-auto pb-2 transition-all delay-200 duration-800 active:cursor-grabbing {visible
+		class="gallery-marquee-wrapper relative w-full overflow-hidden transition-all delay-200 duration-800 {visible
 			? 'translate-y-0 opacity-100'
 			: 'translate-y-7 opacity-0'}"
-		role="slider"
-		aria-valuenow="0"
-		aria-label="Image gallery"
-		onmousedown={handleMouseDown}
-		onmouseleave={handleMouseLeave}
-		onmouseup={handleMouseUp}
-		onmousemove={handleMouseMove}
-		tabindex="0"
 	>
-		{#each images as img (img.id)}
-			<enhanced:img
-				src={img.src}
-				alt={img.alt}
-				sizes="(min-width: 768px) 400px, 260px"
-				class="gallery-img h-65 w-auto max-w-none shrink-0 object-cover saturate-[0.82] transition-all duration-400 hover:scale-[1.02] hover:saturate-[1.15] md:h-100"
-			/>
-		{/each}
+		<div
+			class="gallery-marquee-inner flex w-fit animate-marquee gap-4 hover:[animation-play-state:paused]"
+		>
+			{#each displayImages as img (img.id)}
+				<div class="gallery-img-item shrink-0">
+					<enhanced:img
+						src={img.src}
+						alt={img.alt}
+						sizes="(min-width: 768px) 400px, 260px"
+						class="gallery-img h-65 w-auto object-cover saturate-[0.82] transition-all duration-400 hover:scale-[1.02] hover:saturate-[1.15] md:h-100"
+					/>
+				</div>
+			{/each}
+		</div>
 	</div>
 </section>
 
 <style>
 	.text-clamp-title {
 		font-size: clamp(2rem, 3.5vw, 3.2rem);
-	}
-
-	.no-scrollbar::-webkit-scrollbar {
-		display: none;
-	}
-	.no-scrollbar {
-		-ms-overflow-style: none;
-		scrollbar-width: none;
 	}
 </style>

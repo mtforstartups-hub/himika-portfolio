@@ -1,12 +1,12 @@
 <script lang="ts">
 	import heroSection from '$lib/assets/hero-section.jpg?enhanced&w=480;640;800;1024;1280;1440';
-	import img3 from '$lib/assets/img3.jpg?enhanced&w=320;480;640;800;1024';
+	import about1 from '$lib/assets/about1.jpg?enhanced&w=320;480;640;800;1024';
 	import { reveal } from '$lib/actions/reveal';
 
 	let visible = $state(false);
 
 	const specs = [
-		{ id: 1, label: 'Screen Age', value: '18–26 years' },
+		{ id: 1, label: 'Screen Age', value: '18–28 years' },
 		{ id: 2, label: 'Height', value: '5\'5" / 165cm' },
 		{ id: 3, label: 'Languages', value: 'English, Hindi, Bengali, Malayalam' },
 		{ id: 4, label: 'Training', value: 'Bristol Old Vic Theatre School' },
@@ -36,14 +36,14 @@
 
 		<!-- Secondary Image (Absolute to overlap) -->
 		<enhanced:img
-			class="about-img-secondary absolute -right-2 bottom-[-10%] z-10 h-auto w-[55%] border-4 border-canvas shadow-xl md:right-0 md:bottom-[-15%] md:w-[52%] md:border-6"
-			src={img3}
+			class="about-img-secondary absolute -right-2 bottom-[-10%] z-10 h-auto w-[35%] border-4 border-canvas shadow-xl md:right-0 md:bottom-[-15%] md:w-[42%] md:border-6"
+			src={about1}
 			alt="Himika Bose portrait"
 			sizes="(min-width: 768px) 25vw, 55vw"
 		/>
 
 		<span
-			class="about-badge absolute top-[40%] right-[22%] z-20 -rotate-4 bg-goldenrod px-2 py-1 font-syne text-[0.4rem] font-extrabold tracking-[0.15em] text-charcoal uppercase shadow-lg md:top-[40%] md:right-[22%] md:px-4 md:py-2 md:text-[0.6rem]"
+			class="about-badge absolute top-4/10 right-[22%] z-20 -rotate-4 bg-goldenrod px-2 py-1 font-syne text-[0.4rem] font-extrabold tracking-[0.15em] text-charcoal uppercase shadow-lg md:top-[40%] md:right-[22%] md:px-4 md:py-2 md:text-[0.6rem]"
 		>
 			Delhi · Bombay
 		</span>
@@ -74,16 +74,22 @@
 				: 'translate-y-7 opacity-0'}"
 		>
 			<p class="section-body mb-5 text-[0.95rem] leading-[1.85] font-light text-slate">
-				I'm Himikaa Bose — trained at Bristol Old Vic Theatre School, and equally at home in a
-				dramatic scene as I am losing my mind at a Grand Prix. I've been acting since I was a kid
-				doing short films, and I haven't stopped since.
+				<!-- I'm Himikaa Bose — trained at Bristol Old Vic Theatre School, and equally at home in a
+				dramatic scene as I am losing my mind at a Grand Prix. I've been acting since 2015 doing
+				short films, and I haven't stopped since. -->
+				I’m Himikaa Bose, trained at Bristol Old Vic Theatre School, and equally at home in a dramatic
+				scene as I am losing my mind at a Grand Prix. I’ve been acting since 2015, moving across Bollywood,
+				Malayalam, and Bengali projects, while building a body of work across screen, content, and performance.
 			</p>
 			<p class="section-body mb-8 text-[0.95rem] leading-[1.85] font-light text-slate">
-				From Bollywood to Malayalam cinema to Bengali shows to Amazon OTT — I've been around the
-				block. Off screen, I'm a lifestyle and F1 content creator sharing everything from race
-				weekends and motorsport deep dives to everyday life, fashion, and the chaos of living
-				between Delhi and Bombay. Add 80+ TV commercials and 15 years of dance training and you've
-				got the full picture.
+				<!-- From Bollywood to Malayalam to Bengali cinema — I've been around the block. Off screen, I'm
+				a lifestyle and F1 content creator sharing everything from race weekends and motorsport deep
+				dives to everyday life, fashion, and the chaos of living between Delhi and Bombay. Add 80+
+				TV commercials, 20 years of dancing, and 7 years of training, and you've got the full
+				picture. -->
+				Off screen, I’m a lifestyle and F1 content creator sharing everything from race weekends and motorsport
+				deep dives to everyday life, fashion, and the chaos of living between Delhi and Bombay. Add 7
+				years of formal training and 20 years of dancing, and you’ve got the full picture.
 			</p>
 		</div>
 
