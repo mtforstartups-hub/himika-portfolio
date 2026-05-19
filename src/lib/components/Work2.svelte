@@ -347,11 +347,13 @@
 				{@const rotationClass = index % 2 === 0 ? 'hover:rotate-1' : 'hover:-rotate-1'}
 
 				<div
-					role="button"
-					tabindex="0"
 					onmouseenter={() => (hoveredProject = work)}
 					onmouseleave={() => (hoveredProject = null)}
-					class="group brutal-shadow relative cursor-pointer overflow-hidden bg-neutral-900 {spanClass} {rotationClass}"
+					class="group brutal-shadow relative overflow-hidden bg-neutral-900 {spanClass} {rotationClass}"
+					style="box-shadow: {hoveredProject?.id === work.id
+						? `8px 8px 0px ${work.color}`
+						: 'none'};"
+				>
 					style="box-shadow: {hoveredProject?.id === work.id
 						? `8px 8px 0px ${work.color}`
 						: 'none'};"
