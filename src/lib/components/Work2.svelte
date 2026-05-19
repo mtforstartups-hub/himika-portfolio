@@ -1,101 +1,294 @@
 <script>
-	import { Play, Sparkles, MoveRight } from 'lucide-svelte';
+	import { Play, Sparkles } from 'lucide-svelte';
 
-	// --- MOCK DATA ---
+	// Image imports for enhanced:img
+	import padmanImg from '$lib/assets/work/films/Padman_poster.jpg?enhanced';
+	import jaimummyImg from '$lib/assets/work/films/Jai_Mummy_Di_poster.jpg?enhanced';
+	import valiyaImg from '$lib/assets/work/films/Valiyaperunnal.jpg?enhanced';
+
+	import immatureImg from '$lib/assets/work/web series/immature.jpg?enhanced';
+	import breatheImg from '$lib/assets/work/web series/breathintoshadows.jpg?enhanced';
+	import highwayImg from '$lib/assets/work/web series/highway_love.jpg?enhanced';
+	import insidersImg from '$lib/assets/work/web series/theinsiders.jpg?enhanced';
+	import nishedhImg from '$lib/assets/work/web series/mtvnishedh.jpg?enhanced';
+	import jugaadistanImg from '$lib/assets/work/web series/jugadistaan.jpg?enhanced';
+	import feelsHomeImg from '$lib/assets/work/web series/feels home.jpg?enhanced';
+	import kalipotkaImg from '$lib/assets/work/web series/kalipotka.jpg?enhanced';
+	import glitchImg from '$lib/assets/work/web series/theglitch.jpg?enhanced';
+
+	import abnormalImg from '$lib/assets/work/short films/abnormal.jpg?enhanced';
+	import tippingImg from '$lib/assets/work/short films/thetippingpoint.jpg?enhanced';
+	import whatifImg from '$lib/assets/work/short films/whatifIfail.jpg?enhanced';
+
+	import airtelImg from '$lib/assets/work/commercials/airtel.jpg?enhanced';
+	import kotakImg from '$lib/assets/work/commercials/kotak.jpg?enhanced';
+	import cocaImg from '$lib/assets/work/commercials/cocacola.PNG?enhanced';
+
+	import print1Img from '$lib/assets/work/print media/img1.jpeg?enhanced';
+	import print2Img from '$lib/assets/work/print media/img2.jpeg?enhanced';
+	import print3Img from '$lib/assets/work/print media/img3.jpeg?enhanced';
+
 	const WORKS_DATA = [
+		// SERIES
 		{
-			id: 1,
-			title: 'NEON HEARTS',
-			category: 'Film',
-			role: 'Lead • Mia',
-			director: 'Sofia Coppola',
-			year: '2025',
-			color: '#FF00CC', // Hot Pink
-			image:
-				'https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1925&auto=format&fit=crop',
-			size: 'normal' // spans 2 columns
+			id: 'feelshome',
+			title: 'Feels Like Home',
+			category: 'Series',
+			role: 'Dhriti',
+			director: 'Lionsgate',
+			year: '2022',
+			color: '#B2FF05',
+			image: feelsHomeImg,
+			size: 'large'
 		},
 		{
-			id: 2,
-			title: 'ECLIPSE',
-			category: 'TV',
-			role: 'Series Regular',
-			director: 'HBO Max',
+			id: 'breathe',
+			title: 'Breathe',
+			category: 'Series',
+			role: 'Rahila Kaul',
+			director: 'Amazon',
+			year: '2021',
+			color: '#7000FF',
+			image: breatheImg,
+			size: 'tall'
+		},
+		{
+			id: 'immature',
+			title: 'ImMATURE',
+			category: 'Series',
+			role: 'Nandini / Natasha',
+			director: 'Amazon',
+			year: '2018–Present',
+			color: '#B2FF05',
+			image: immatureImg,
+			size: 'normal'
+		},
+		{
+			id: 'highway',
+			title: 'Highway Love',
+			category: 'Series',
+			role: 'Nidhi',
+			director: 'Amazon',
 			year: '2024',
-			color: '#00E5FF', // Electric Blue
-			image:
-				'https://images.unsplash.com/photo-1605369572399-05d8d64a0f6e?q=80&w=1974&auto=format&fit=crop',
+			color: '#00B2FF',
+			image: highwayImg,
 			size: 'normal'
 		},
 		{
-			id: 3,
-			title: 'VERSACE',
-			category: 'Commercial',
-			role: 'Feature',
-			director: 'Gordon von Steiner',
-			year: '2024',
-			color: '#CCFF00', // Acid Green
-			image:
-				'https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1976&auto=format&fit=crop',
+			id: 'insiders',
+			title: 'The Insiders',
+			category: 'Series',
+			role: 'Shravya Sharma',
+			director: 'TV',
+			year: '2019',
+			color: '#FF8A00',
+			image: insidersImg,
 			size: 'normal'
 		},
 		{
-			id: 4,
-			title: 'SILENT ECHO',
-			category: 'Short',
-			role: 'Lead • Sarah',
-			director: 'A24 Shorts',
-			year: '2023',
-			color: '#FF5500', // Bright Orange
-			image:
-				'https://images.unsplash.com/photo-1621360811013-c76831f1628c?q=80&w=2070&auto=format&fit=crop',
+			id: 'nishedh',
+			title: 'MTV Nishedh',
+			category: 'Series',
+			role: 'Laxmi',
+			director: 'MTV',
+			year: '2020',
+			color: '#FF007F',
+			image: nishedhImg,
 			size: 'normal'
 		},
 		{
-			id: 5,
-			title: 'MIDNIGHT SUN',
-			category: 'Film',
-			role: 'Supporting',
-			director: 'Denis Villeneuve',
-			year: '2023',
-			color: '#B200FF', // Neon Purple
-			image:
-				'https://images.unsplash.com/photo-1515634928627-2a4e0dae3ddf?q=80&w=2070&auto=format&fit=crop',
-			size: 'normal' // spans 2 rows
+			id: 'jugaadistan',
+			title: 'Jugaadistan',
+			category: 'Series',
+			role: 'Aarti Chatterjee',
+			director: 'Lionsgate',
+			year: '2022',
+			color: '#00F0FF',
+			image: jugaadistanImg,
+			size: 'normal'
+		},
+
+		{
+			id: 'kalipotka',
+			title: 'Kali Potka',
+			category: 'Series',
+			role: 'Role',
+			director: 'TV',
+			year: '2021',
+			color: '#FF8A00',
+			image: kalipotkaImg,
+			size: 'normal'
 		},
 		{
-			id: 6,
-			title: 'MIDNIGHT SUN',
-			category: 'Film',
-			role: 'Supporting',
-			director: 'Denis Villeneuve',
-			year: '2023',
-			color: '#B200FF', // Neon Purple
-			image:
-				'https://images.unsplash.com/photo-1515634928627-2a4e0dae3ddf?q=80&w=2070&auto=format&fit=crop',
-			size: 'tall' // spans 2 rows
+			id: 'glitch',
+			title: 'The Glitch',
+			category: 'Series',
+			role: 'Role',
+			director: 'TV',
+			year: '2022',
+			color: '#00E5FF',
+			image: glitchImg,
+			size: 'normal'
+		},
+
+		// FILMS
+		{
+			id: 'padman',
+			title: 'Pad Man',
+			category: 'Films',
+			role: 'Supporting Role',
+			director: 'Film',
+			year: '2018',
+			color: '#FF007F',
+			image: padmanImg,
+			size: 'tall'
+		},
+		{
+			id: 'jaimummy',
+			title: 'Jai Mummy Di',
+			category: 'Films',
+			role: 'Role',
+			director: 'Film',
+			year: '2020',
+			color: '#00F0FF',
+			image: jaimummyImg,
+			size: 'tall'
+		},
+		{
+			id: 'valiya',
+			title: 'Valiyaperunnal',
+			category: 'Films',
+			role: 'Female Lead — Pooja',
+			director: 'Film',
+			year: '2020',
+			color: '#FF8A00',
+			image: valiyaImg,
+			size: 'tall'
+		},
+
+		// SHORTS
+		{
+			id: 'abnormal',
+			title: 'Abnormal',
+			category: 'Shorts',
+			role: 'Lead',
+			director: 'Short Film',
+			year: '2016',
+			color: '#FF5500',
+			image: abnormalImg,
+			size: 'normal'
+		},
+		{
+			id: 'tipping',
+			title: 'The Tipping Point',
+			category: 'Shorts',
+			role: 'Lead',
+			director: 'Short Film',
+			year: '2021',
+			color: '#B200FF',
+			image: tippingImg,
+			size: 'normal'
+		},
+		{
+			id: 'whatif',
+			title: 'What If I Fail',
+			category: 'Shorts',
+			role: 'Lead',
+			director: 'Short Film',
+			year: '2022',
+			color: '#00E5FF',
+			image: whatifImg,
+			size: 'normal'
+		},
+
+		// ADS
+		{
+			id: 'airtel',
+			title: 'Airtel × iPhone',
+			category: 'Ads',
+			role: 'TVC',
+			director: 'OTT',
+			year: '—',
+			color: '#FF00CC',
+			image: airtelImg,
+			size: 'large'
+		},
+		{
+			id: 'kotak',
+			title: 'Kotak',
+			category: 'Ads',
+			role: 'TVC',
+			director: 'Film',
+			year: '—',
+			color: '#CCFF00',
+			image: kotakImg,
+			size: 'normal'
+		},
+		{
+			id: 'coca',
+			title: 'Coca Cola',
+			category: 'Ads',
+			role: 'TVC',
+			director: 'Film',
+			year: '—',
+			color: '#FF5500',
+			image: cocaImg,
+			size: 'normal'
+		},
+
+		// PRINT
+		{
+			id: 'print1',
+			title: 'Editorial 01',
+			category: 'Print',
+			role: 'Model',
+			director: 'Print',
+			year: '—',
+			color: '#00E5FF',
+			image: print1Img,
+			size: 'normal'
+		},
+		{
+			id: 'print2',
+			title: 'Editorial 02',
+			category: 'Print',
+			role: 'Model',
+			director: 'Print',
+			year: '—',
+			color: '#FF00CC',
+			image: print2Img,
+			size: 'normal'
+		},
+		{
+			id: 'print3',
+			title: 'Editorial 03',
+			category: 'Print',
+			role: 'Model',
+			director: 'Print',
+			year: '—',
+			color: '#B200FF',
+			image: print3Img,
+			size: 'normal'
 		}
 	];
 
-	const CATEGORIES = ['All', 'Film', 'TV', 'Commercial', 'Short'];
+	const CATEGORIES = ['Series', 'Films', 'Shorts', 'Ads', 'Print'];
 
 	// Svelte 5 Runes for State Management
-	let activeFilter = $state('All');
+	let activeFilter = $state('Series');
 	let hoveredProject = $state(null);
 	let containerRef = $state();
 
 	// Derived state for the filtered works
-	let filteredWorks = $derived(
-		WORKS_DATA.filter((work) => activeFilter === 'All' || work.category === activeFilter)
-	);
+	let filteredWorks = $derived(WORKS_DATA.filter((work) => work.category === activeFilter));
 </script>
 
 <div
-	class="min-h-screen overflow-x-hidden bg-canvas text-charcoal selection:bg-[#CCFF00] selection:text-black"
+	class="min-h-screen overflow-x-hidden bg-canvas text-charcoal selection:bg-ember selection:text-black"
 >
 	<!-- --- BACKGROUND DYNAMIC GLOW --- -->
 	<div
-		class="pointer-events-none fixed top-1/2 left-1/2 size-200 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-20 mix-blend-screen blur-[150px] transition-colors duration-700 ease-in-out"
+		class="pointer-events-none fixed top-1/2 left-1/2 h-[50rem] w-[50rem] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-20 mix-blend-screen blur-[150px] transition-colors duration-700 ease-in-out"
 		style="
       background-color: {hoveredProject ? hoveredProject.color : '#333'};
       transform: {hoveredProject
@@ -108,24 +301,20 @@
 		<!-- --- HEADER SECTION --- -->
 		<div class="mb-16 flex flex-col justify-between gap-8 md:flex-row md:items-end">
 			<div class="group relative cursor-default">
-				<h2 class="text-6xl leading-none font-black tracking-tighter uppercase sm:text-8xl">
+				<h2 class="text-clamp-title font-syne leading-[1.1] font-extrabold">
 					<span
-						class="stroke-text block text-transparent"
-						style="-webkit-text-stroke: 1px rgba(255,255,255,0.5);">The</span
+						class="stroke-text block font-display tracking-widest text-transparent"
+						style="-webkit-text-stroke: 1px rgba(20,20,20,1);">The</span
 					>
-					<span class="block text-[#CCFF00] transition-colors duration-300 group-hover:text-white"
+					<span
+						class="block text-3xl text-ember transition-colors duration-300 group-hover:text-charcoal md:text-5xl"
 						>Archive</span
 					>
 				</h2>
-				<div class="animate-spin-slow absolute -top-6 -right-12 text-[#FF00CC]">
+				<div class="animate-spin-slow absolute -top-6 -right-12 text-ember">
 					<Sparkles size={48} strokeWidth={1} />
 				</div>
 			</div>
-
-			<p class="max-w-md text-lg font-light text-neutral-400 md:text-xl">
-				A curated selection of cinematic explorations, television appearances, and high-impact
-				commercial collaborations.
-			</p>
 		</div>
 
 		<!-- --- FILTER NAVIGATION --- -->
@@ -172,7 +361,7 @@
 						<div
 							class="absolute inset-0 z-10 bg-black/40 transition-colors duration-500 group-hover:bg-black/10"
 						></div>
-						<img
+						<enhanced:img
 							src={work.image}
 							alt={work.title}
 							class="h-full w-full object-cover opacity-70 grayscale transition-all duration-700 ease-out group-hover:scale-110 group-hover:opacity-100 group-hover:grayscale-0"
@@ -220,7 +409,7 @@
 							<p
 								class="mb-2 font-mono text-sm text-white/70 opacity-0 transition-opacity delay-100 duration-300 group-hover:opacity-100"
 							>
-								{work.year} // DIR. {work.director}
+								{work.year} // {work.director}
 							</p>
 							<h3 class="mb-1 text-3xl font-black tracking-tight text-white uppercase sm:text-4xl">
 								{work.title}
@@ -238,7 +427,7 @@
 		</div>
 
 		<!-- --- VIEW REEL CALL TO ACTION --- -->
-		<div class="mt-20 flex justify-center">
+		<!-- <div class="mt-20 flex justify-center">
 			<button
 				class="group relative inline-flex items-center gap-4 overflow-hidden rounded-full bg-[#CCFF00] px-8 py-5 font-black tracking-widest text-black uppercase transition-transform hover:scale-105"
 			>
@@ -246,12 +435,12 @@
 					View Full Showreel
 					<MoveRight class="transition-transform duration-300 group-hover:translate-x-2" />
 				</span>
-				<!-- Button Hover effect background -->
+				
 				<div
 					class="absolute inset-0 z-0 translate-y-full rounded-full bg-white transition-transform duration-300 ease-out group-hover:translate-y-0"
 				></div>
 			</button>
-		</div>
+		</div> -->
 	</section>
 </div>
 
@@ -275,9 +464,6 @@
 	.brutal-shadow:hover {
 		transform: translate(-4px, -4px);
 	}
-	.clip-diagonal {
-		clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
-	}
 
 	/* Custom scrollbar for hiding horizontal scroll but keeping functionality */
 	:global(.no-scrollbar::-webkit-scrollbar) {
@@ -286,5 +472,8 @@
 	.no-scrollbar {
 		-ms-overflow-style: none;
 		scrollbar-width: none;
+	}
+	.text-clamp-title {
+		font-size: clamp(2rem, 3.5vw, 3.2rem);
 	}
 </style>
