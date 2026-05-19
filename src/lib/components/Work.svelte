@@ -291,7 +291,7 @@
 					<a
 						href={project.link}
 						target="_blank"
-						rel="external"
+						rel="external noopener noreferrer"
 						class="group relative flex flex-col overflow-hidden bg-pure-white transition-all duration-500 hover:-translate-x-1 hover:-translate-y-2 hover:rotate-1 {project.span}"
 						style="--brand-color: {project.color}; box-shadow: 0 0 0 transparent; transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);"
 						onmouseenter={() => (activeGlow = project.color || 'transparent')}
