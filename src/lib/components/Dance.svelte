@@ -1,6 +1,5 @@
 <script lang="ts">
 	import dance1 from '$lib/assets/dance1.jpg?enhanced&w=480;640;800;1024;1280;1440';
-	import dance2 from '$lib/assets/dance2.jpg?enhanced&w=320;480;640;800;1024';
 	import dance3 from '$lib/assets/dance3.jpg?enhanced&w=320;480;640;800;1024';
 	import dance4 from '$lib/assets/dance4.jpg?enhanced&w=320;480;640;800;1024';
 	import dance5 from '$lib/assets/dance5.jpg?enhanced&w=320;480;640;800;1024';
