@@ -356,8 +356,7 @@
 				>
 					style="box-shadow: {hoveredProject?.id === work.id
 						? `8px 8px 0px ${work.color}`
-						: 'none'};"
-				>
+						: 'none'};" >
 					<!-- --- BACKGROUND IMAGE --- -->
 					<div class="absolute inset-0 h-full w-full">
 						<div
