@@ -1,5 +1,5 @@
 <script lang="ts">
-	import '@fontsource/ms-madi/400.css';
+	import '@fontsource/mrs-saint-delafield/400.css';
 	import { onMount } from 'svelte';
 	import { resolve } from '$app/paths';
 
@@ -9,6 +9,7 @@
 	const navLinks = [
 		{ name: 'About', href: '#about' },
 		{ name: 'Work', href: '#work' },
+		{ name: 'Headshots', href: '#headshots-reel' },
 		{ name: 'F1', href: '#f1' },
 		{ name: 'Brands', href: '#brands' },
 		{ name: 'Dance', href: '#dance' },
@@ -47,7 +48,7 @@
 >
 	<a
 		href={resolve('/')}
-		class="font-script text-xl font-extrabold tracking-widest text-charcoal no-underline sm:text-2xl lg:text-3xl"
+		class="font-script text-xl font-semibold tracking-widest text-charcoal no-underline sm:text-3xl lg:text-4xl"
 	>
 		Himika <span class="text-ember">Bose</span>
 	</a>

@@ -27,6 +27,7 @@
 				pin: '.sticky-viewport',
 				pinSpacing: false,
 				invalidateOnRefresh: true,
+				fastScrollEnd: true,
 				onUpdate: (self) => {
 					progress = Math.round(self.progress * 100);
 				}

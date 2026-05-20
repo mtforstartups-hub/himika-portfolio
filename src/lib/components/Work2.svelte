@@ -284,11 +284,12 @@
 </script>
 
 <div
+	id="work"
 	class="min-h-screen overflow-x-hidden bg-canvas text-charcoal selection:bg-ember selection:text-black"
 >
 	<!-- --- BACKGROUND DYNAMIC GLOW --- -->
 	<div
-		class="pointer-events-none fixed top-1/2 left-1/2 h-[50rem] w-[50rem] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-20 mix-blend-screen blur-[150px] transition-colors duration-700 ease-in-out"
+		class="pointer-events-none fixed top-1/2 left-1/2 size-200 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-20 mix-blend-screen blur-[150px] transition-colors duration-700 ease-in-out"
 		style="
       background-color: {hoveredProject ? hoveredProject.color : '#333'};
       transform: {hoveredProject
@@ -349,14 +350,12 @@
 				<div
 					onmouseenter={() => (hoveredProject = work)}
 					onmouseleave={() => (hoveredProject = null)}
+					role="presentation"
 					class="group brutal-shadow relative overflow-hidden bg-neutral-900 {spanClass} {rotationClass}"
 					style="box-shadow: {hoveredProject?.id === work.id
 						? `8px 8px 0px ${work.color}`
 						: 'none'};"
 				>
-					style="box-shadow: {hoveredProject?.id === work.id
-						? `8px 8px 0px ${work.color}`
-						: 'none'};" >
 					<!-- --- BACKGROUND IMAGE --- -->
 					<div class="absolute inset-0 h-full w-full">
 						<div

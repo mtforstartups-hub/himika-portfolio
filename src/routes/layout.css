@@ -6,7 +6,7 @@
 	--font-syne: 'Syne Variable', sans-serif;
 	--font-display: 'Playfair Display Variable', serif;
 	--font-sans: 'DM Sans Variable', sans-serif;
-	--font-script: 'Ms Madi', cursive;
+	--font-script: 'Mrs Saint Delafield', cursive;
 
 	--color-canvas: #faf7f2;
 	--color-charcoal: #141414;
@@ -67,4 +67,8 @@
 		background: var(--color-canvas);
 		color: var(--color-charcoal);
 	}
+}
+
+html {
+	scroll-behavior: smooth;
 }
