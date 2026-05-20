@@ -3,8 +3,12 @@
 	import collab2 from '$lib/assets/collab2.jpg?enhanced&w=320;480;640;800;1024;1280';
 	import collab3 from '$lib/assets/collab3.jpg?enhanced&w=320;480;640;800;1024;1280';
 	import { reveal } from '$lib/actions/reveal';
+	import { ChevronLeft, ChevronRight } from 'lucide-svelte';
 
 	let visible = $state(false);
+	let scrollContainer = $state<HTMLDivElement>();
+	let atStart = $state(true);
+	let atEnd = $state(false);
 
 	const deals = [
 		{
@@ -34,16 +38,43 @@
 			brand: 'Maybelline',
 			image: collab2,
 			link: 'https://www.instagram.com/p/CrBQD4DpGui/',
-			delay: 'delay-100'
+			delay: 'delay-300'
 		},
 		{
 			id: 5,
 			brand: 'Parachute',
 			image: collab3,
 			link: 'https://www.instagram.com/reel/DTCdyGRCiMp/',
-			delay: 'delay-200'
+			delay: 'delay-400'
 		}
 	];
+
+	function scroll(direction: 'prev' | 'next') {
+		if (!scrollContainer) return;
+		const itemWidth = (scrollContainer.firstElementChild as HTMLElement)?.offsetWidth ?? 0;
+		const gap = 24; // gap-6 = 1.5rem = 24px
+		const scrollAmount = itemWidth + gap;
+
+		scrollContainer.scrollBy({
+			left: direction === 'next' ? scrollAmount : -scrollAmount,
+			behavior: 'smooth'
+		});
+	}
+
+	function handleScroll() {
+		if (!scrollContainer) return;
+		atStart = scrollContainer.scrollLeft <= 10;
+		atEnd =
+			scrollContainer.scrollLeft + scrollContainer.clientWidth >= scrollContainer.scrollWidth - 10;
+	}
+
+	$effect(() => {
+		if (scrollContainer) {
+			handleScroll();
+			window.addEventListener('resize', handleScroll);
+			return () => window.removeEventListener('resize', handleScroll);
+		}
+	});
 </script>
 
 <section
@@ -76,61 +107,120 @@
 		</p>
 	</div>
 
-	<div class="reels-grid grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-5">
-		{#each deals as deal (deal.id)}
-			<div
-				class="reel-item group relative aspect-9/16 overflow-hidden bg-charcoal transition-all duration-800 {deal.delay} {visible
-					? 'translate-y-0 opacity-100'
-					: 'translate-y-7 opacity-0'}"
-			>
-				<enhanced:img
-					src={deal.image}
-					alt={deal.brand}
-					sizes="(min-width: 1024px) 33vw, 50vw"
-					class="reel-thumbnail absolute inset-0 h-full w-full object-cover brightness-[0.6] saturate-[0.7] transition-all duration-400 group-hover:scale-104 group-hover:brightness-[0.5] group-hover:saturate-100"
-				/>
+	<div class="carousel-wrapper group/carousel relative">
+		<!-- Navigation Buttons -->
+		<button
+			onclick={() => scroll('prev')}
+			disabled={atStart}
+			class="absolute top-1/2 -left-3 z-20 flex size-9 -translate-y-1/2 items-center justify-center rounded-full bg-white text-charcoal shadow-[0_4px_12px_rgba(0,0,0,0.1)] transition-all duration-300 hover:bg-ember hover:text-white disabled:pointer-events-none disabled:opacity-0 xs:-left-4 xs:size-11 md:-left-8 md:size-13 {visible
+				? 'scale-100 opacity-100'
+				: 'scale-90 opacity-0'}"
+			aria-label="Previous slide"
+		>
+			<ChevronLeft class="size-5 md:size-6" />
+		</button>
 
+		<button
+			onclick={() => scroll('next')}
+			disabled={atEnd}
+			class="absolute top-1/2 -right-3 z-20 flex size-9 -translate-y-1/2 items-center justify-center rounded-full bg-white text-charcoal shadow-[0_4px_12px_rgba(0,0,0,0.1)] transition-all duration-300 hover:bg-ember hover:text-white disabled:pointer-events-none disabled:opacity-0 xs:-right-4 xs:size-11 md:-right-8 md:size-13 {visible
+				? 'scale-100 opacity-100'
+				: 'scale-90 opacity-0'}"
+			aria-label="Next slide"
+		>
+			<ChevronRight class="size-5 md:size-6" />
+		</button>
+
+		<div
+			bind:this={scrollContainer}
+			onscroll={handleScroll}
+			class="reels-carousel no-scrollbar flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth"
+		>
+			{#each deals as deal (deal.id)}
 				<div
-					class="reel-overlay absolute inset-0 flex flex-col items-center justify-center gap-4 p-6 text-center"
+					class="reel-item group relative aspect-9/16 min-w-0 shrink-0 snap-start overflow-hidden bg-charcoal transition-all duration-800 {deal.delay} {visible
+						? 'translate-y-0 opacity-100'
+						: 'translate-y-7 opacity-0'}"
 				>
-					<span
-						class="reel-tag bg-ember px-1.5 py-0.5 font-syne text-[0.45rem] font-bold tracking-[0.2em] text-white uppercase xs:px-3 xs:py-1 xs:text-[0.58rem]"
-					>
-						Brand Collab
-					</span>
+					<enhanced:img
+						src={deal.image}
+						alt={deal.brand}
+						sizes="(min-width: 1024px) 20vw, (min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw"
+						class="reel-thumbnail absolute inset-0 h-full w-full object-cover brightness-[0.6] saturate-[0.7] transition-all duration-400 group-hover:scale-104 group-hover:brightness-[0.5] group-hover:saturate-100"
+					/>
 
 					<div
-						class="reel-brand-name font-syne text-[0.7rem] font-extrabold tracking-normal text-white uppercase xs:text-[0.8rem] xs:tracking-wider sm:text-[1.1rem]"
+						class="reel-overlay absolute inset-0 flex flex-col items-center justify-center gap-4 p-6 text-center"
 					>
-						{deal.brand}
+						<span
+							class="reel-tag bg-ember px-1.5 py-0.5 font-syne text-[0.45rem] font-bold tracking-[0.2em] text-white uppercase xs:px-3 xs:py-1 xs:text-[0.58rem]"
+						>
+							Brand Collab
+						</span>
+
+						<div
+							class="reel-brand-name font-syne text-[0.7rem] font-extrabold tracking-normal text-white uppercase xs:text-[0.8rem] xs:tracking-wider sm:text-[1.1rem]"
+						>
+							{deal.brand}
+						</div>
+
+						<a
+							href={deal.link}
+							target="_blank"
+							rel="external"
+							class="reel-play-btn flex size-9 items-center justify-center rounded-full border-2 border-white/40 bg-white/15 text-xl text-white backdrop-blur-xs transition-all duration-300 hover:scale-110 hover:border-ember hover:bg-ember xs:size-13"
+							aria-label="Play Reel"
+						>
+							▶
+						</a>
+
+						<a
+							href={deal.link}
+							target="_blank"
+							rel="external"
+							class="reel-watch-link flex items-center gap-1.5 font-syne text-[0.45rem] font-bold tracking-normal text-white/70 uppercase transition-colors duration-300 after:content-['↗'] hover:text-goldenrod xs:text-[0.62rem] xs:tracking-[0.15em]"
+						>
+							Watch Reel
+						</a>
 					</div>
-
-					<a
-						href={deal.link}
-						target="_blank"
-						rel="external"
-						class="reel-play-btn flex size-9 items-center justify-center rounded-full border-2 border-white/40 bg-white/15 text-xl text-white backdrop-blur-xs transition-all duration-300 hover:scale-110 hover:border-ember hover:bg-ember xs:size-13"
-						aria-label="Play Reel"
-					>
-						▶
-					</a>
-
-					<a
-						href={deal.link}
-						target="_blank"
-						rel="external"
-						class="reel-watch-link flex items-center gap-1.5 font-syne text-[0.45rem] font-bold tracking-normal text-white/70 uppercase transition-colors duration-300 after:content-['↗'] hover:text-goldenrod xs:text-[0.62rem] xs:tracking-[0.15em]"
-					>
-						Watch Reel
-					</a>
 				</div>
-			</div>
-		{/each}
+			{/each}
+		</div>
 	</div>
 </section>
 
 <style>
 	.text-clamp-title {
 		font-size: clamp(2rem, 3.5vw, 3.2rem);
+	}
+
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
+	.no-scrollbar {
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+	}
+
+	.reel-item {
+		flex: 0 0 100%;
+	}
+
+	@media (min-width: 640px) {
+		.reel-item {
+			flex: 0 0 calc((100% - 1.5rem) / 2);
+		}
+	}
+
+	@media (min-width: 768px) {
+		.reel-item {
+			flex: 0 0 calc((100% - 3rem) / 3);
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.reel-item {
+			flex: 0 0 calc((100% - 6rem) / 5);
+		}
 	}
 </style>
