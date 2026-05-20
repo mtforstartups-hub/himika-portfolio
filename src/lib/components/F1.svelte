@@ -29,7 +29,7 @@
 <section
 	id="f1"
 	use:reveal={(v) => (visible = v)}
-	class="f1-section relative overflow-hidden bg-[#0f0f0f] px-6 py-20 text-white md:px-14 md:py-32"
+	class="f1-section relative overflow-hidden bg-[#0f0f0f] px-6 py-10 text-white md:px-14 md:py-20"
 >
 	<!-- Background Giant Text -->
 	<div
@@ -65,7 +65,7 @@
 					takes, in-depth informational content, driver breakdowns, and commentary for fellow F1
 					fans across India.
 				</p>
-				<p class="section-body mb-10 text-[0.95rem] leading-[1.85] font-light text-white/50">
+				<p class="section-body mb-6 text-[0.95rem] leading-[1.85] font-light text-white/50">
 					From explaining technical regulations to breaking down race strategy — it's not just
 					vibes, it's actual knowledge. Her passion for the sport is baked into her identity, and
 					her audience loves her for it.
@@ -101,14 +101,14 @@
 
 			<!-- Stats Grid -->
 			<div
-				class="f1-stats grid grid-cols-2 gap-6 transition-all delay-300 duration-800 {visible
+				class="f1-stats grid grid-cols-4 gap-3 transition-all delay-300 duration-800 {visible
 					? 'translate-y-0 opacity-100'
 					: 'translate-y-7 opacity-0'}"
 			>
 				{#each f1Stats as stat (stat.label)}
-					<div class="f1-stat border border-vermillion/25 bg-vermillion/5 p-3 md:p-6">
+					<div class="f1-stat border border-vermillion/25 bg-vermillion/5 p-1 md:p-3">
 						<div
-							class="f1-stat-num font-syne text-xl leading-none font-extrabold text-vermillion md:text-3xl"
+							class="f1-stat-num font-syne text-base leading-none font-bold text-vermillion md:text-xl"
 						>
 							{stat.num}
 						</div>
