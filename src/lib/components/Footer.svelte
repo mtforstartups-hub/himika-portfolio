@@ -1,5 +1,5 @@
 <script lang="ts">
-	import '@fontsource/ms-madi/400.css';
+	import '@fontsource/mrs-saint-delafield/400.css';
 	import { resolve } from '$app/paths';
 
 	const links = [
