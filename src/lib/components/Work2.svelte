@@ -24,9 +24,17 @@
 	import kotakImg from '$lib/assets/work/commercials/kotak.jpg?enhanced';
 	import cocaImg from '$lib/assets/work/commercials/cocacola.PNG?enhanced';
 
-	import print1Img from '$lib/assets/work/print media/img1.jpeg?enhanced';
-	import print2Img from '$lib/assets/work/print media/img2.jpeg?enhanced';
-	import print3Img from '$lib/assets/work/print media/img3.jpeg?enhanced';
+	import print1Img from '$lib/assets/work/print media/print1.png?enhanced';
+	import print2Img from '$lib/assets/work/print media/print2.jpeg?enhanced';
+	import print3Img from '$lib/assets/work/print media/print3.png?enhanced';
+	import print4Img from '$lib/assets/work/print media/print4.png?enhanced';
+	import print5Img from '$lib/assets/work/print media/print5.png?enhanced';
+	import print6Img from '$lib/assets/work/print media/print6.png?enhanced';
+	import print7Img from '$lib/assets/work/print media/print7.jpeg?enhanced';
+	import print8Img from '$lib/assets/work/print media/print8.jpeg?enhanced';
+	import print9Img from '$lib/assets/work/print media/print9.jpeg?enhanced';
+	import print10Img from '$lib/assets/work/print media/print10.jpeg?enhanced';
+	import print11Img from '$lib/assets/work/print media/print11.png?enhanced';
 
 	const WORKS_DATA = [
 		// SERIES
@@ -269,6 +277,94 @@
 			color: '#B200FF',
 			image: print3Img,
 			size: 'normal'
+		},
+		{
+			id: 'print4',
+			title: 'Editorial 04',
+			category: 'Print',
+			role: 'Model',
+			director: 'Print',
+			year: '—',
+			color: '#FF8A00',
+			image: print4Img,
+			size: 'normal'
+		},
+		{
+			id: 'print5',
+			title: 'Editorial 05',
+			category: 'Print',
+			role: 'Model',
+			director: 'Print',
+			year: '—',
+			color: '#00F0FF',
+			image: print5Img,
+			size: 'normal'
+		},
+		{
+			id: 'print6',
+			title: 'Editorial 06',
+			category: 'Print',
+			role: 'Model',
+			director: 'Print',
+			year: '—',
+			color: '#FF007F',
+			image: print6Img,
+			size: 'normal'
+		},
+		{
+			id: 'print7',
+			title: 'Editorial 07',
+			category: 'Print',
+			role: 'Model',
+			director: 'Print',
+			year: '—',
+			color: '#B2FF05',
+			image: print7Img,
+			size: 'normal'
+		},
+		{
+			id: 'print8',
+			title: 'Editorial 08',
+			category: 'Print',
+			role: 'Model',
+			director: 'Print',
+			year: '—',
+			color: '#FF5500',
+			image: print8Img,
+			size: 'normal'
+		},
+		{
+			id: 'print9',
+			title: 'Editorial 09',
+			category: 'Print',
+			role: 'Model',
+			director: 'Print',
+			year: '—',
+			color: '#00E5FF',
+			image: print9Img,
+			size: 'normal'
+		},
+		{
+			id: 'print10',
+			title: 'Editorial 10',
+			category: 'Print',
+			role: 'Model',
+			director: 'Print',
+			year: '—',
+			color: '#B200FF',
+			image: print10Img,
+			size: 'normal'
+		},
+		{
+			id: 'print11',
+			title: 'Editorial 11',
+			category: 'Print',
+			role: 'Model',
+			director: 'Print',
+			year: '—',
+			color: '#FF00CC',
+			image: print11Img,
+			size: 'normal'
 		}
 	];
 
@@ -334,16 +430,8 @@
 		</div>
 
 		<!-- --- DYNAMIC MASONRY GRID --- -->
-		<div bind:this={containerRef} class="grid auto-rows-[300px] grid-cols-1 gap-6 md:grid-cols-3">
+		<div bind:this={containerRef} class="brutal-masonry">
 			{#each filteredWorks as work, index (work.id)}
-				<!-- Determine grid span based on the 'size' property -->
-				{@const spanClass =
-					work.size === 'large'
-						? 'md:col-span-2 md:row-span-2'
-						: work.size === 'tall'
-							? 'md:col-span-1 md:row-span-2'
-							: 'md:col-span-1 md:row-span-1'}
-
 				<!-- Alternating slight rotations -->
 				{@const rotationClass = index % 2 === 0 ? 'hover:rotate-1' : 'hover:-rotate-1'}
 
@@ -351,20 +439,18 @@
 					onmouseenter={() => (hoveredProject = work)}
 					onmouseleave={() => (hoveredProject = null)}
 					role="presentation"
-					class="group brutal-shadow relative overflow-hidden bg-neutral-900 {spanClass} {rotationClass}"
-					style="box-shadow: {hoveredProject?.id === work.id
-						? `8px 8px 0px ${work.color}`
-						: 'none'};"
+					class="group brutal-shadow brutal-masonry-item relative overflow-hidden bg-neutral-900 {rotationClass}"
+					style="--hover-shadow-color: {work.color};"
 				>
 					<!-- --- BACKGROUND IMAGE --- -->
-					<div class="absolute inset-0 h-full w-full">
+					<div class="relative h-auto w-full">
 						<div
 							class="absolute inset-0 z-10 bg-black/40 transition-colors duration-500 group-hover:bg-black/10"
 						></div>
 						<enhanced:img
 							src={work.image}
 							alt={work.title}
-							class="h-full w-full object-cover opacity-70 grayscale transition-all duration-700 ease-out group-hover:scale-110 group-hover:opacity-100 group-hover:grayscale-0"
+							class="block h-auto w-full opacity-70 grayscale transition-all duration-700 ease-out group-hover:scale-110 group-hover:opacity-100 group-hover:grayscale-0"
 						/>
 					</div>
 
@@ -373,18 +459,18 @@
 						class="pointer-events-none absolute top-1/2 left-0 z-20 w-full -translate-y-1/2 -rotate-6 overflow-hidden opacity-0 mix-blend-overlay transition-opacity duration-300 group-hover:opacity-100"
 					>
 						<div class="animate-marquee whitespace-nowrap">
-							<span class="px-4 text-6xl font-black text-white/50 uppercase sm:text-8xl">
+							<span class="px-2 text-3xl font-black text-white/50 uppercase md:text-5xl">
 								{work.title} • {work.category} • {work.title} • {work.category} •
 							</span>
 						</div>
 					</div>
 
 					<!-- --- CARD CONTENT --- -->
-					<div class="absolute inset-0 z-30 flex flex-col justify-between p-6 sm:p-8">
+					<div class="absolute inset-0 z-30 flex flex-col justify-between p-4 md:p-6">
 						<!-- Top Row: Category Pill & Play Button -->
 						<div class="flex items-start justify-between">
 							<span
-								class="rounded-full border bg-black/30 px-3 py-1 text-xs font-bold tracking-wider text-white uppercase backdrop-blur-md"
+								class="rounded-full border bg-black/30 px-2 py-0.5 text-[9px] font-bold tracking-wider text-white uppercase backdrop-blur-md md:text-xs"
 								style="
                   color: {hoveredProject?.id === work.id ? work.color : 'white'};
                   border-color: {hoveredProject?.id === work.id
@@ -396,9 +482,9 @@
 							</span>
 
 							<div
-								class="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/10 opacity-0 backdrop-blur-md transition-all duration-300 group-hover:scale-110 group-hover:opacity-100"
+								class="flex h-8 w-8 items-center justify-center rounded-full border border-white/20 bg-white/10 opacity-0 backdrop-blur-md transition-all duration-300 group-hover:scale-110 group-hover:opacity-100 md:h-12 md:w-12"
 							>
-								<Play fill="white" size={20} class="ml-1" />
+								<Play fill="white" class="ml-0.5 size-3.5 md:size-5" />
 							</div>
 						</div>
 
@@ -407,15 +493,17 @@
 							class="translate-y-4 transform transition-transform duration-300 group-hover:translate-y-0"
 						>
 							<p
-								class="mb-2 font-mono text-sm text-white/70 opacity-0 transition-opacity delay-100 duration-300 group-hover:opacity-100"
+								class="mb-1 font-mono text-[10px] text-white/70 opacity-0 transition-opacity delay-100 duration-300 group-hover:opacity-100 md:text-xs"
 							>
 								{work.year} // {work.director}
 							</p>
-							<h3 class="mb-1 text-3xl font-black tracking-tight text-white uppercase sm:text-4xl">
+							<h3
+								class="mb-0.5 text-base font-black tracking-tight text-white uppercase md:mb-1 md:text-2xl"
+							>
 								{work.title}
 							</h3>
 							<p
-								class="text-lg font-medium opacity-0 transition-opacity delay-200 duration-300 group-hover:opacity-100"
+								class="text-xs font-medium opacity-0 transition-opacity delay-200 duration-300 group-hover:opacity-100 md:text-sm"
 								style="color: {work.color};"
 							>
 								{work.role}
@@ -458,11 +546,50 @@
 		white-space: nowrap;
 		animation: marquee 15s linear infinite;
 	}
+	.brutal-masonry {
+		column-count: 2;
+		column-gap: 1rem;
+		width: 100%;
+	}
+	@media (min-width: 768px) {
+		.brutal-masonry {
+			column-count: 3;
+			column-gap: 1.5rem;
+		}
+	}
+	@media (min-width: 1024px) {
+		.brutal-masonry {
+			column-count: 4;
+			column-gap: 1.5rem;
+		}
+	}
+	.brutal-masonry-item {
+		display: inline-block;
+		width: 100%;
+		break-inside: avoid;
+		margin-bottom: 1rem;
+	}
+	@media (min-width: 768px) {
+		.brutal-masonry-item {
+			margin-bottom: 1.5rem;
+		}
+	}
+	.brital-shadow {
+		transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+	}
 	.brutal-shadow {
 		transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+		box-shadow: none;
 	}
 	.brutal-shadow:hover {
 		transform: translate(-4px, -4px);
+		box-shadow: 4px 4px 0px var(--hover-shadow-color);
+	}
+	@media (min-width: 768px) {
+		.brutal-shadow:hover {
+			transform: translate(-8px, -8px);
+			box-shadow: 8px 8px 0px var(--hover-shadow-color);
+		}
 	}
 
 	/* Custom scrollbar for hiding horizontal scroll but keeping functionality */
