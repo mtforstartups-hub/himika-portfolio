@@ -363,8 +363,7 @@
 			color: '#B200FF',
 			image: print10Img,
 			size: 'normal'
-		},
-		
+		}
 	];
 
 	const CATEGORIES = ['Series', 'Films', 'Shorts', 'Ads', 'Print'];
@@ -498,7 +497,10 @@
 								{work.year} // {work.director}
 							</p>
 							<h3
-								class="mb-0.5 text-base font-black tracking-tight text-white uppercase md:mb-1 {work.size === 'large' ? 'md:text-3xl' : 'md:text-2xl'}"
+								class="mb-0.5 text-base font-black tracking-tight text-white uppercase md:mb-1 {work.size ===
+								'large'
+									? 'md:text-3xl'
+									: 'md:text-2xl'}"
 							>
 								{work.title}
 							</h3>
@@ -518,8 +520,12 @@
 
 <style>
 	@keyframes marquee {
-		0% { transform: translateX(0%); }
-		100% { transform: translateX(-50%); }
+		0% {
+			transform: translateX(0%);
+		}
+		100% {
+			transform: translateX(-50%);
+		}
 	}
 	.animate-marquee {
 		display: inline-block;
@@ -570,7 +576,9 @@
 	}
 
 	/* --- UTILITY --- */
-	:global(.no-scrollbar::-webkit-scrollbar) { display: none; }
+	:global(.no-scrollbar::-webkit-scrollbar) {
+		display: none;
+	}
 	.no-scrollbar {
 		-ms-overflow-style: none;
 		scrollbar-width: none;
