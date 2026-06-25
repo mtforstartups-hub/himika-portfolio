@@ -55,30 +55,37 @@
 					}
 				});
 
-				// Look 1
+				// Look 1 (Spotlight Reveal)
+				masterTimeline.set('#photo-6-container', { opacity: 1, autoAlpha: 1 });
 				masterTimeline.fromTo(
-					'#photo-1',
-					{ y: '120vh', scale: 0.7, opacity: 0, autoAlpha: 0 },
+					'#photo-6-img-container',
+					{ clipPath: 'circle(0% at 50% 50%)' },
 					{
-						y: '0vh',
-						scale: 1,
-						opacity: 1,
-						autoAlpha: 1,
-						duration: 4,
-						ease: 'power2.out',
+						clipPath: 'circle(75% at 50% 50%)',
+						duration: 5,
+						ease: 'power1.inOut',
 						onStart: () => {
-							activeLook = 'LOOK 01 // DRAMATIC';
-							gsap.to('#ambient-glow', { background: 'rgba(244, 196, 48, 0.08)', duration: 0.5 });
+							activeLook = 'LOOK 01 // SPOTLIGHT REVEAL';
+							gsap.to('#ambient-glow', { background: 'rgba(255, 255, 255, 0.05)', duration: 0.5 });
 						}
 					}
 				);
-				masterTimeline.to('#photo-1', { scale: 1.1, duration: 2, ease: 'none' });
-				masterTimeline.to('#photo-1', {
-					scale: 1.5,
+				masterTimeline.fromTo(
+					'#photo-6-label',
+					{ opacity: 0, scale: 0.9, y: 50 },
+					{ opacity: 1, scale: 1, y: 0, duration: 2.5, ease: 'power2.out' },
+					'-=3'
+				);
+				masterTimeline.to('#photo-6-img-container', {
+					clipPath: 'circle(0% at 50% 50%)',
+					duration: 4,
+					ease: 'power2.in'
+				});
+				masterTimeline.to('#photo-6-label', { opacity: 0, duration: 2 }, '-=3');
+				masterTimeline.to('#photo-6-container', {
 					opacity: 0,
 					autoAlpha: 0,
-					duration: 3,
-					ease: 'power2.in'
+					duration: 1
 				});
 
 				// Looks 2, 3, 4 (Collage)
@@ -226,36 +233,30 @@
 					ease: 'power2.in'
 				});
 
-				// Look 5 (Spotlight Reveal)
-				masterTimeline.set('#photo-6-container', { opacity: 1, autoAlpha: 1 });
+				// Look 5 (Dramatic)
 				masterTimeline.fromTo(
-					'#photo-6-img-container',
-					{ clipPath: 'circle(0% at 50% 50%)' },
+					'#photo-1',
+					{ y: '120vh', scale: 0.7, opacity: 0, autoAlpha: 0 },
 					{
-						clipPath: 'circle(75% at 50% 50%)',
-						duration: 5,
-						ease: 'power1.inOut',
+						y: '0vh',
+						scale: 1,
+						opacity: 1,
+						autoAlpha: 1,
+						duration: 4,
+						ease: 'power2.out',
 						onStart: () => {
-							activeLook = 'LOOK 05 // SPOTLIGHT REVEAL';
+							activeLook = 'LOOK 05 // DRAMATIC';
+							gsap.to('#ambient-glow', { background: 'rgba(244, 196, 48, 0.08)', duration: 0.5 });
 						}
 					}
 				);
-				masterTimeline.fromTo(
-					'#photo-6-label',
-					{ opacity: 0, scale: 0.9, y: 50 },
-					{ opacity: 1, scale: 1, y: 0, duration: 2.5, ease: 'power2.out' },
-					'-=3'
-				);
-				masterTimeline.to('#photo-6-img-container', {
-					clipPath: 'circle(0% at 50% 50%)',
-					duration: 4,
-					ease: 'power2.in'
-				});
-				masterTimeline.to('#photo-6-label', { opacity: 0, duration: 2 }, '-=3');
-				masterTimeline.to('#photo-6-container', {
+				masterTimeline.to('#photo-1', { scale: 1.1, duration: 2, ease: 'none' });
+				masterTimeline.to('#photo-1', {
+					scale: 1.5,
 					opacity: 0,
 					autoAlpha: 0,
-					duration: 1,
+					duration: 3,
+					ease: 'power2.in',
 					onComplete: () => {
 						activeLook = 'REEL COMPLETED';
 					}
@@ -341,7 +342,7 @@
 				></div>
 				<div class="absolute right-0 bottom-0 left-0 z-20 p-6">
 					<span class="mb-1 block font-mono text-[10px] tracking-widest text-goldenrod uppercase"
-						>Look 01 // Dramatic</span
+						>Look 05 // Dramatic</span
 					>
 					<h4 class="font-syne text-lg font-bold tracking-wider text-white uppercase md:text-xl">
 						The Presence
@@ -454,7 +455,7 @@
 					class="pointer-events-none absolute z-10 -translate-y-24 text-center select-none"
 				>
 					<span class="mb-2 block font-mono text-[10px] tracking-[0.4em] text-goldenrod uppercase"
-						>Look 05 // Spotlight</span
+						>Look 01 // Spotlight</span
 					>
 					<h4 class="font-syne text-3xl font-black tracking-wider text-white uppercase md:text-5xl">
 						Himika Bose

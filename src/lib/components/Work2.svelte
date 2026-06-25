@@ -299,6 +299,17 @@
 			size: 'normal'
 		},
 		{
+			id: 'print7',
+			title: 'BBC News',
+			category: 'Print',
+			role: 'Model',
+			director: 'Print',
+			year: '—',
+			color: '#B2FF05',
+			image: print7Img,
+			size: 'normal'
+		},
+		{
 			id: 'print5',
 			title: 'Cocacola',
 			category: 'Print',
@@ -320,17 +331,7 @@
 			image: print11Img,
 			size: 'large'
 		},
-		{
-			id: 'print7',
-			title: 'BBC News',
-			category: 'Print',
-			role: 'Model',
-			director: 'Print',
-			year: '—',
-			color: '#B2FF05',
-			image: print7Img,
-			size: 'normal'
-		},
+
 		{
 			id: 'print8',
 			title: 'BBC News',
@@ -442,7 +443,7 @@
 						- normal/tall (1 col):  aspect-[2/3]  → height = 1.5 × col-width
 						- large      (2 cols):  aspect-[4/3]  → height = 0.75 × (2 × col-width) = 1.5 × col-width ✓
 					-->
-					<div class="relative w-full {work.size === 'large' ? 'aspect-[3/2]' : 'aspect-[3/4]'}">
+					<div class="relative w-full {work.size === 'large' ? 'aspect-3/2' : 'aspect-3/4'}">
 						<div
 							class="absolute inset-0 z-10 bg-black/40 transition-colors duration-500 group-hover:bg-black/10"
 						></div>
@@ -515,6 +516,21 @@
 				</div>
 			{/each}
 		</div>
+
+		<!-- ADS PLAYLIST BUTTON -->
+		{#if activeFilter === 'Ads'}
+			<div class="mt-16 flex justify-start pb-8 md:mt-20">
+				<a
+					href="https://youtube.com/playlist?list=PLPXz3RaRn1cYwUM6K1265pvF4WJhZQdVW&si=DqCVeLEyp66R9ueF"
+					target="_blank"
+					rel="external"
+					class="flex items-center gap-3 border border-ember bg-ember px-6 py-3 text-[0.7rem] font-bold tracking-[0.15em] text-white uppercase shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all duration-300 hover:scale-105 md:px-8 md:py-4 md:text-xs"
+				>
+					<Play fill="currentColor" class="size-3 md:size-4" />
+					Watch More
+				</a>
+			</div>
+		{/if}
 	</section>
 </div>
 
