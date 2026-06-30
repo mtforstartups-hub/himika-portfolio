@@ -178,14 +178,14 @@
 		>
 			<!-- Track: total width = number of slides × slide-width -->
 			<div
-				class="carousel-track flex"
+				class="carousel-track -mx-2 flex"
 				style="transform: translateX({translateX}); transition: {isDragging
 					? 'none'
 					: 'transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94)'};"
 			>
 				{#each videos as video (video.id)}
 					<!-- Each slide is exactly 1 / itemsPerPage of the viewport -->
-					<div class="carousel-slide shrink-0" style="width: {slideWidthPct}%;">
+					<div class="carousel-slide shrink-0 px-2" style="width: {slideWidthPct}%;">
 						<div
 							class="f1-reel-item group relative aspect-9/16 cursor-grab overflow-hidden bg-[#1a1a1a] select-none active:cursor-grabbing"
 						>

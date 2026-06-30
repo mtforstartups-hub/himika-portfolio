@@ -9,7 +9,7 @@
 	import breatheImg from '$lib/assets/work/web series/breathintoshadows.jpg?enhanced';
 	import highwayImg from '$lib/assets/work/web series/highway_love.jpg?enhanced';
 	import insidersImg from '$lib/assets/work/web series/theinsiders.jpg?enhanced';
-	import nishedhImg from '$lib/assets/work/web series/mtvnishedh.jpg?enhanced';
+	import canteenhonors from '$lib/assets/work/web series/canteenhonors.jpg?enhanced';
 	import jugaadistanImg from '$lib/assets/work/web series/jugadistaan.jpg?enhanced';
 	import feelsHomeImg from '$lib/assets/work/web series/feels home.jpg?enhanced';
 	import kalipotkaImg from '$lib/assets/work/web series/kalipotka.jpg?enhanced';
@@ -93,14 +93,14 @@
 			size: 'normal'
 		},
 		{
-			id: 'nishedh',
-			title: 'MTV Nishedh',
+			id: 'canteenhonors',
+			title: 'Canteen Honors',
 			category: 'Series',
-			role: 'Laxmi',
-			director: 'MTV',
+			role: 'Sifra',
+			director: 'Karpoor Gaurav',
 			year: '2020',
 			color: '#FF007F',
-			image: nishedhImg,
+			image: canteenhonors,
 			size: 'normal'
 		},
 		{
