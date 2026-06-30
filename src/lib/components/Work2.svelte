@@ -267,7 +267,7 @@
 		},
 		{
 			id: 'print3',
-			title: 'Maybeline NY',
+			title: 'Maybelline NY',
 			category: 'Print',
 			role: 'Model',
 			director: 'Print',
@@ -289,7 +289,7 @@
 		},
 		{
 			id: 'print6',
-			title: 'Induslnd Bank',
+			title: 'IndusInd Bank',
 			category: 'Print',
 			role: 'Model',
 			director: 'Print',
@@ -322,7 +322,7 @@
 		},
 		{
 			id: 'print11',
-			title: 'Airtel x Iphone',
+			title: 'Airtel × iPhone',
 			category: 'Print',
 			role: 'Model',
 			director: 'Print',
@@ -345,7 +345,7 @@
 		},
 		{
 			id: 'print9',
-			title: 'Induslnd Bank',
+			title: 'IndusInd Bank',
 			category: 'Print',
 			role: 'Model',
 			director: 'Print',
