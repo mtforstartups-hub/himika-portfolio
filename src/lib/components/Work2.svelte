@@ -1,7 +1,6 @@
 <script>
 	import { Play, Sparkles } from 'lucide-svelte';
 
-	// Image imports for enhanced:img
 	import padmanImg from '$lib/assets/work/films/Padman_poster.jpg?enhanced';
 	import jaimummyImg from '$lib/assets/work/films/Jai_Mummy_Di_poster.jpg?enhanced';
 	import valiyaImg from '$lib/assets/work/films/Valiyaperunnal.jpg?enhanced';
@@ -47,7 +46,7 @@
 			year: '2022',
 			color: '#B2FF05',
 			image: feelsHomeImg,
-			size: 'large'
+			size: 'tall'
 		},
 		{
 			id: 'breathe',
@@ -115,7 +114,6 @@
 			image: jugaadistanImg,
 			size: 'normal'
 		},
-
 		{
 			id: 'kalipotka',
 			title: 'Kali Potka',
@@ -230,7 +228,7 @@
 			year: '—',
 			color: '#CCFF00',
 			image: kotakImg,
-			size: 'normal'
+			size: 'large'
 		},
 		{
 			id: 'coca',
@@ -247,7 +245,7 @@
 		// PRINT
 		{
 			id: 'print1',
-			title: 'Editorial 01',
+			title: 'Straight Outta Street',
 			category: 'Print',
 			role: 'Model',
 			director: 'Print',
@@ -258,7 +256,7 @@
 		},
 		{
 			id: 'print2',
-			title: 'Editorial 02',
+			title: 'BBC News Hindi',
 			category: 'Print',
 			role: 'Model',
 			director: 'Print',
@@ -269,7 +267,7 @@
 		},
 		{
 			id: 'print3',
-			title: 'Editorial 03',
+			title: 'Maybelline NY',
 			category: 'Print',
 			role: 'Model',
 			director: 'Print',
@@ -280,7 +278,7 @@
 		},
 		{
 			id: 'print4',
-			title: 'Editorial 04',
+			title: 'Denim',
 			category: 'Print',
 			role: 'Model',
 			director: 'Print',
@@ -290,19 +288,8 @@
 			size: 'normal'
 		},
 		{
-			id: 'print5',
-			title: 'Editorial 05',
-			category: 'Print',
-			role: 'Model',
-			director: 'Print',
-			year: '—',
-			color: '#00F0FF',
-			image: print5Img,
-			size: 'normal'
-		},
-		{
 			id: 'print6',
-			title: 'Editorial 06',
+			title: 'IndusInd Bank',
 			category: 'Print',
 			role: 'Model',
 			director: 'Print',
@@ -313,7 +300,7 @@
 		},
 		{
 			id: 'print7',
-			title: 'Editorial 07',
+			title: 'BBC News',
 			category: 'Print',
 			role: 'Model',
 			director: 'Print',
@@ -323,8 +310,31 @@
 			size: 'normal'
 		},
 		{
+			id: 'print5',
+			title: 'Cocacola',
+			category: 'Print',
+			role: 'Model',
+			director: 'Print',
+			year: '—',
+			color: '#00F0FF',
+			image: print5Img,
+			size: 'large'
+		},
+		{
+			id: 'print11',
+			title: 'Airtel × iPhone',
+			category: 'Print',
+			role: 'Model',
+			director: 'Print',
+			year: '—',
+			color: '#FF00CC',
+			image: print11Img,
+			size: 'large'
+		},
+
+		{
 			id: 'print8',
-			title: 'Editorial 08',
+			title: 'BBC News',
 			category: 'Print',
 			role: 'Model',
 			director: 'Print',
@@ -335,7 +345,7 @@
 		},
 		{
 			id: 'print9',
-			title: 'Editorial 09',
+			title: 'IndusInd Bank',
 			category: 'Print',
 			role: 'Model',
 			director: 'Print',
@@ -346,7 +356,7 @@
 		},
 		{
 			id: 'print10',
-			title: 'Editorial 10',
+			title: 'Creating Bright Future',
 			category: 'Print',
 			role: 'Model',
 			director: 'Print',
@@ -354,28 +364,15 @@
 			color: '#B200FF',
 			image: print10Img,
 			size: 'normal'
-		},
-		{
-			id: 'print11',
-			title: 'Editorial 11',
-			category: 'Print',
-			role: 'Model',
-			director: 'Print',
-			year: '—',
-			color: '#FF00CC',
-			image: print11Img,
-			size: 'normal'
 		}
 	];
 
 	const CATEGORIES = ['Series', 'Films', 'Shorts', 'Ads', 'Print'];
 
-	// Svelte 5 Runes for State Management
 	let activeFilter = $state('Series');
 	let hoveredProject = $state(null);
 	let containerRef = $state();
 
-	// Derived state for the filtered works
 	let filteredWorks = $derived(WORKS_DATA.filter((work) => work.category === activeFilter));
 </script>
 
@@ -383,7 +380,7 @@
 	id="work"
 	class="min-h-screen overflow-x-hidden bg-canvas text-charcoal selection:bg-ember selection:text-black"
 >
-	<!-- --- BACKGROUND DYNAMIC GLOW --- -->
+	<!-- BACKGROUND DYNAMIC GLOW -->
 	<div
 		class="pointer-events-none fixed top-1/2 left-1/2 size-200 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-20 mix-blend-screen blur-[150px] transition-colors duration-700 ease-in-out"
 		style="
@@ -395,7 +392,7 @@
 	></div>
 
 	<section class="relative z-10 mx-auto px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
-		<!-- --- HEADER SECTION --- -->
+		<!-- HEADER -->
 		<div class="mb-16 flex flex-col justify-between gap-8 md:flex-row md:items-end">
 			<div class="group relative cursor-default">
 				<h2 class="text-clamp-title font-syne leading-[1.1] font-extrabold">
@@ -414,7 +411,7 @@
 			</div>
 		</div>
 
-		<!-- --- FILTER NAVIGATION --- -->
+		<!-- FILTER NAVIGATION -->
 		<div class="no-scrollbar mb-12 flex gap-3 overflow-x-auto pb-4">
 			{#each CATEGORIES as cat (cat)}
 				<button
@@ -429,32 +426,35 @@
 			{/each}
 		</div>
 
-		<!-- --- DYNAMIC MASONRY GRID --- -->
-		<div bind:this={containerRef} class="brutal-masonry">
-			{#each filteredWorks as work, index (work.id)}
-				<!-- Alternating slight rotations -->
-				{@const rotationClass = index % 2 === 0 ? 'hover:rotate-1' : 'hover:-rotate-1'}
-
+		<!-- EDITORIAL GRID -->
+		<div bind:this={containerRef} class="brutal-grid">
+			{#each filteredWorks as work (work.id)}
 				<div
 					onmouseenter={() => (hoveredProject = work)}
 					onmouseleave={() => (hoveredProject = null)}
 					role="presentation"
-					class="group brutal-shadow brutal-masonry-item relative overflow-hidden bg-neutral-900 {rotationClass}"
+					class="group brutal-shadow relative overflow-hidden bg-neutral-900"
+					class:col-span-2={work.size === 'large'}
 					style="--hover-shadow-color: {work.color};"
 				>
-					<!-- --- BACKGROUND IMAGE --- -->
-					<div class="relative h-auto w-full">
+					<!-- IMAGE -->
+					<!--
+						Aspect ratio logic keeps all row heights equal:
+						- normal/tall (1 col):  aspect-[2/3]  → height = 1.5 × col-width
+						- large      (2 cols):  aspect-[4/3]  → height = 0.75 × (2 × col-width) = 1.5 × col-width ✓
+					-->
+					<div class="relative w-full {work.size === 'large' ? 'aspect-3/2' : 'aspect-3/4'}">
 						<div
 							class="absolute inset-0 z-10 bg-black/40 transition-colors duration-500 group-hover:bg-black/10"
 						></div>
 						<enhanced:img
 							src={work.image}
 							alt={work.title}
-							class="block h-auto w-full opacity-70 grayscale transition-all duration-700 ease-out group-hover:scale-110 group-hover:opacity-100 group-hover:grayscale-0"
+							class="block h-full w-full object-contain opacity-70 grayscale transition-all duration-700 ease-out group-hover:scale-110 group-hover:opacity-100 group-hover:grayscale-0"
 						/>
 					</div>
 
-					<!-- --- KINETIC MARQUEE --- -->
+					<!-- KINETIC MARQUEE -->
 					<div
 						class="pointer-events-none absolute top-1/2 left-0 z-20 w-full -translate-y-1/2 -rotate-6 overflow-hidden opacity-0 mix-blend-overlay transition-opacity duration-300 group-hover:opacity-100"
 					>
@@ -465,9 +465,9 @@
 						</div>
 					</div>
 
-					<!-- --- CARD CONTENT --- -->
+					<!-- CARD CONTENT -->
 					<div class="absolute inset-0 z-30 flex flex-col justify-between p-4 md:p-6">
-						<!-- Top Row: Category Pill & Play Button -->
+						<!-- Top: category pill + play button -->
 						<div class="flex items-start justify-between">
 							<span
 								class="rounded-full border bg-black/30 px-2 py-0.5 text-[9px] font-bold tracking-wider text-white uppercase backdrop-blur-md md:text-xs"
@@ -488,7 +488,7 @@
 							</div>
 						</div>
 
-						<!-- Bottom Row: Text Details -->
+						<!-- Bottom: title + role -->
 						<div
 							class="translate-y-4 transform transition-transform duration-300 group-hover:translate-y-0"
 						>
@@ -498,7 +498,10 @@
 								{work.year} // {work.director}
 							</p>
 							<h3
-								class="mb-0.5 text-base font-black tracking-tight text-white uppercase md:mb-1 md:text-2xl"
+								class="mb-0.5 text-base font-black tracking-tight text-white uppercase md:mb-1 {work.size ===
+								'large'
+									? 'md:text-3xl'
+									: 'md:text-2xl'}"
 							>
 								{work.title}
 							</h3>
@@ -514,21 +517,20 @@
 			{/each}
 		</div>
 
-		<!-- --- VIEW REEL CALL TO ACTION --- -->
-		<!-- <div class="mt-20 flex justify-center">
-			<button
-				class="group relative inline-flex items-center gap-4 overflow-hidden rounded-full bg-[#CCFF00] px-8 py-5 font-black tracking-widest text-black uppercase transition-transform hover:scale-105"
-			>
-				<span class="relative z-10 flex items-center gap-2">
-					View Full Showreel
-					<MoveRight class="transition-transform duration-300 group-hover:translate-x-2" />
-				</span>
-				
-				<div
-					class="absolute inset-0 z-0 translate-y-full rounded-full bg-white transition-transform duration-300 ease-out group-hover:translate-y-0"
-				></div>
-			</button>
-		</div> -->
+		<!-- ADS PLAYLIST BUTTON -->
+		{#if activeFilter === 'Ads'}
+			<div class="mt-16 flex justify-start pb-8 md:mt-20">
+				<a
+					href="https://youtube.com/playlist?list=PLPXz3RaRn1cYwUM6K1265pvF4WJhZQdVW&si=DqCVeLEyp66R9ueF"
+					target="_blank"
+					rel="external"
+					class="flex items-center gap-3 border border-ember bg-ember px-6 py-3 text-[0.7rem] font-bold tracking-[0.15em] text-white uppercase shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all duration-300 hover:scale-105 md:px-8 md:py-4 md:text-xs"
+				>
+					<Play fill="currentColor" class="size-3 md:size-4" />
+					Watch More
+				</a>
+			</div>
+		{/if}
 	</section>
 </div>
 
@@ -546,37 +548,34 @@
 		white-space: nowrap;
 		animation: marquee 15s linear infinite;
 	}
-	.brutal-masonry {
-		column-count: 2;
-		column-gap: 1rem;
+
+	/* --- EDITORIAL GRID --- */
+	.brutal-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1rem;
 		width: 100%;
 	}
 	@media (min-width: 768px) {
-		.brutal-masonry {
-			column-count: 3;
-			column-gap: 1.5rem;
+		.brutal-grid {
+			grid-template-columns: repeat(4, 1fr);
+			gap: 1.5rem;
 		}
 	}
 	@media (min-width: 1024px) {
-		.brutal-masonry {
-			column-count: 4;
-			column-gap: 1.5rem;
+		.brutal-grid {
+			grid-template-columns: repeat(5, 1fr);
+			gap: 1.5rem;
 		}
 	}
-	.brutal-masonry-item {
-		display: inline-block;
-		width: 100%;
-		break-inside: avoid;
-		margin-bottom: 1rem;
+
+	/* col-span-2 is a Tailwind utility class applied via class: directive.
+	   This rule is a fallback in case Tailwind purges it. */
+	.col-span-2 {
+		grid-column: span 2 / span 2;
 	}
-	@media (min-width: 768px) {
-		.brutal-masonry-item {
-			margin-bottom: 1.5rem;
-		}
-	}
-	.brital-shadow {
-		transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-	}
+
+	/* --- BRUTAL SHADOW HOVER --- */
 	.brutal-shadow {
 		transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 		box-shadow: none;
@@ -592,7 +591,7 @@
 		}
 	}
 
-	/* Custom scrollbar for hiding horizontal scroll but keeping functionality */
+	/* --- UTILITY --- */
 	:global(.no-scrollbar::-webkit-scrollbar) {
 		display: none;
 	}
